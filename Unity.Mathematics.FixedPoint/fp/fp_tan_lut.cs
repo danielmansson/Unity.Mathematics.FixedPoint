@@ -1,4 +1,4 @@
-namespace Unity.Mathematics 
+namespace Unity.Mathematics.FixedPoint 
 {
     partial struct fp 
     {

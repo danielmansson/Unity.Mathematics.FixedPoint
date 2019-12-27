@@ -1,27 +1,27 @@
 using System.Runtime.CompilerServices;
 
 
-namespace Unity.Mathematics
+namespace Unity.Mathematics.FixedPoint
 {
-    public static partial class math
+    public static partial class fpmath
     {
         const string NOT_SUPPORTED_YET = "";
 
         /// <summary>Returns the bit pattern of a fp as a uint.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint asuint(fp x) { return (uint)asint((uint)x); }
+        public static uint asuint(fp x) { return (uint)math.asint((uint)x); }
 
         /// <summary>Returns the bit pattern of a fp2 as a uint2.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint2 asuint(fp2 x) { return uint2(asuint(x.x), asuint(x.y)); }
+        public static uint2 asuint(fp2 x) { return math.uint2(asuint(x.x), asuint(x.y)); }
 
         /// <summary>Returns the bit pattern of a fp3 as a uint3.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint3 asuint(fp3 x) { return uint3(asuint(x.x), asuint(x.y), asuint(x.z)); }
+        public static uint3 asuint(fp3 x) { return math.uint3(asuint(x.x), asuint(x.y), asuint(x.z)); }
 
         /// <summary>Returns the bit pattern of a fp4 as a uint4.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint4 asuint(fp4 x) { return uint4(asuint(x.x), asuint(x.y), asuint(x.z), asuint(x.w)); }
+        public static uint4 asuint(fp4 x) { return math.uint4(asuint(x.x), asuint(x.y), asuint(x.z), asuint(x.w)); }
 
 
         /// <summary>Returns the absolute value of a fp value.</summary>
@@ -652,8 +652,8 @@ namespace Unity.Mathematics
         /// </summary>
         static public fp2 normalizesafe(fp2 x, fp2 defaultvalue = new fp2())
         {
-            fp len = math.dot(x, x);
-            return math.select(defaultvalue, x * math.rsqrt(len), len > 0.00000001m);
+            fp len = fpmath.dot(x, x);
+            return fpmath.select(defaultvalue, x * fpmath.rsqrt(len), len > 0.00000001m);
         }
 
         /// <summary>
@@ -662,8 +662,8 @@ namespace Unity.Mathematics
         /// </summary>
         static public fp3 normalizesafe(fp3 x, fp3 defaultvalue = new fp3())
         {
-            fp len = math.dot(x, x);
-            return math.select(defaultvalue, x * math.rsqrt(len), len > 0.00000001m);
+            fp len = fpmath.dot(x, x);
+            return fpmath.select(defaultvalue, x * fpmath.rsqrt(len), len > 0.00000001m);
         }
 
         /// <summary>
@@ -672,8 +672,8 @@ namespace Unity.Mathematics
         /// </summary>
         static public fp4 normalizesafe(fp4 x, fp4 defaultvalue = new fp4())
         {
-            fp len = math.dot(x, x);
-            return math.select(defaultvalue, x * math.rsqrt(len), len > 0.00000001m);
+            fp len = fpmath.dot(x, x);
+            return fpmath.select(defaultvalue, x * fpmath.rsqrt(len), len > 0.00000001m);
         }
 
 

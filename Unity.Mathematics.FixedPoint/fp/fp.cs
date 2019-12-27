@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Runtime.CompilerServices;
 
-namespace Unity.Mathematics
+namespace Unity.Mathematics.FixedPoint
 {
 
 	/// <summary>
@@ -1040,7 +1040,7 @@ namespace Unity.Mathematics
 			using (var writer = new StreamWriter("Fix64SinLut.cs"))
 			{
 				writer.Write(
-@"namespace Unity.Mathematics 
+@"namespace Unity.Mathematics.FixedPoint 
 {
     partial struct Fix64 
     {
@@ -1072,7 +1072,7 @@ namespace Unity.Mathematics
 			using (var writer = new StreamWriter("Fix64TanLut.cs"))
 			{
 				writer.Write(
-@"namespace Unity.Mathematics 
+@"namespace Unity.Mathematics.FixedPoint 
 {
     partial struct Fix64 
     {
