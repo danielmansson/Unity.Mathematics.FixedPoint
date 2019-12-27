@@ -4,7 +4,7 @@
         "TestAssemblies"
     ],
     "references": [
-        "Unity.Mathematics.FixedPoint"
+        "Unity.Mathematics"
     ],
     "includePlatforms": [
         "Editor"

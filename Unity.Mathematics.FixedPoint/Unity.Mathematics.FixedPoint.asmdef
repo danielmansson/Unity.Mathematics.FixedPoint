@@ -1,4 +1,7 @@
 {
-	"name": "Unity.Mathematics",
-	"allowUnsafeCode": true
+	"name": "Unity.Mathematics.FixedPoint",
+	"allowUnsafeCode": true,
+    "references": [
+        "Unity.Mathematics"
+    ]
 }

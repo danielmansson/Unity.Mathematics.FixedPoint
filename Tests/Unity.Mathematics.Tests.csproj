@@ -7,8 +7,8 @@
     <ProjectGuid>{2E7C74D3-42F1-482F-8BB7-EEE9D9E3B412}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Unity.Mathematics.Tests</RootNamespace>
-    <AssemblyName>Unity.Mathematics.Tests</AssemblyName>
+    <RootNamespace>Unity.Mathematics.FixedPoint.Tests</RootNamespace>
+    <AssemblyName>Unity.Mathematics.FixedPoint.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
