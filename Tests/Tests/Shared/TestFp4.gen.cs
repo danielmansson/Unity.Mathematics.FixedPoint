@@ -7,15 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using NUnit.Framework;
+using static Unity.Mathematics.FixedPoint.fpmath;
 using static Unity.Mathematics.math;
-using Burst.Compiler.IL.Tests;
 
-namespace Unity.Mathematics.Tests
+namespace Unity.Mathematics.FixedPoint.Tests
 {
     [TestFixture]
     public class TestFp4
     {
-        [TestCompiler]
         public static void fp4_zero()
         {
             TestUtils.AreEqual(fp4.zero.x, (fp)0);
@@ -24,7 +23,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(fp4.zero.w, (fp)0);
         }
 
-        [TestCompiler]
         public static void fp4_constructor()
         {
             fp4 a = new fp4(1, 2, 3, 4);
@@ -34,7 +32,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(a.w, 4);
         }
 
-        [TestCompiler]
         public static void fp4_scalar_constructor()
         {
             fp4 a = new fp4(17.0m);
@@ -44,7 +41,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(a.w, 17.0m);
         }
 
-        [TestCompiler]
         public static void fp4_static_constructor()
         {
             fp4 a = fp4(1, 2, 3, 4);
@@ -54,7 +50,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(a.w, 4);
         }
 
-        [TestCompiler]
         public static void fp4_static_scalar_constructor()
         {
             fp4 a = fp4(17.0m);
@@ -64,7 +59,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(a.w, 17.0m);
         }
 
-        [TestCompiler]
         public static void fp4_operator_equal_wide_wide()
         {
             fp4 a0 = fp4(-135.18924m, -49.0941162m, 169.129822m, 240.8053m);
@@ -88,7 +82,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(a3 == b3, r3);
         }
 
-        [TestCompiler]
         public static void fp4_operator_equal_wide_scalar()
         {
             fp4 a0 = fp4(65.6712m, 404.415527m, -269.730164m, 83.6306152m);
@@ -112,7 +105,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(a3 == b3, r3);
         }
 
-        [TestCompiler]
         public static void fp4_operator_equal_scalar_wide()
         {
             fp a0 = (36.38391m);
@@ -136,7 +128,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(a3 == b3, r3);
         }
 
-        [TestCompiler]
         public static void fp4_operator_not_equal_wide_wide()
         {
             fp4 a0 = fp4(279.994141m, -43.34201m, -465.724731m, 317.466553m);
@@ -160,7 +151,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(a3 != b3, r3);
         }
 
-        [TestCompiler]
         public static void fp4_operator_not_equal_wide_scalar()
         {
             fp4 a0 = fp4(-155.4411m, -19.4266052m, 174.633057m, 507.920715m);
@@ -184,7 +174,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(a3 != b3, r3);
         }
 
-        [TestCompiler]
         public static void fp4_operator_not_equal_scalar_wide()
         {
             fp a0 = (478.353149m);
@@ -208,7 +197,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(a3 != b3, r3);
         }
 
-        [TestCompiler]
         public static void fp4_shuffle_result_1()
         {
             fp4 a = fp4(0, 1, 2, 3);
@@ -224,7 +212,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(shuffle(a, b, ShuffleComponent.RightW), (7));
         }
 
-        [TestCompiler]
         public static void fp4_shuffle_result_2()
         {
             fp4 a = fp4(0, 1, 2, 3);
@@ -248,7 +235,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(shuffle(a, b, ShuffleComponent.LeftY, ShuffleComponent.LeftW), fp2(1, 3));
         }
 
-        [TestCompiler]
         public static void fp4_shuffle_result_3()
         {
             fp4 a = fp4(0, 1, 2, 3);
@@ -272,7 +258,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(shuffle(a, b, ShuffleComponent.RightY, ShuffleComponent.LeftY, ShuffleComponent.RightW), fp3(5, 1, 7));
         }
 
-        [TestCompiler]
         public static void fp4_shuffle_result_4()
         {
             fp4 a = fp4(0, 1, 2, 3);

@@ -8,10 +8,11 @@
 //------------------------------------------------------------------------------
 using System;
 using System.Runtime.CompilerServices;
+using static Unity.Mathematics.math;
 
 #pragma warning disable 0660, 0661
 
-namespace Unity.Mathematics
+namespace Unity.Mathematics.FixedPoint
 {
     [System.Serializable]
     public partial struct fp2x2 : System.IEquatable<fp2x2>, IFormattable
@@ -291,7 +292,7 @@ namespace Unity.Mathematics
 
         /// <summary>Returns a hash code for the fp2x2.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)math.hash(this); }
+        public override int GetHashCode() { return (int)fpmath.hash(this); }
 
 
         /// <summary>Returns a string representation of the fp2x2.</summary>
@@ -310,7 +311,7 @@ namespace Unity.Mathematics
 
     }
 
-    public static partial class math
+    public static partial class fpmath
     {
         /// <summary>Returns a fp2x2 matrix constructed from two fp2 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -358,8 +359,8 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(fp2x2 v)
         {
-            return csum(asuint(v.c0) * uint2(0xEADF0775u, 0x747A9D7Bu) + 
-                        asuint(v.c1) * uint2(0x4111F799u, 0xB5F05AF1u)) + 0xFD80290Bu;
+            return math.csum(fpmath.asuint(v.c0) * uint2(0x90A285BBu, 0x5D19E1D5u) + 
+                        fpmath.asuint(v.c1) * uint2(0xFAAF07DDu, 0x625C45BDu)) + 0xC9F27FCBu;
         }
 
         /// <summary>
@@ -370,8 +371,8 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint2 hashwide(fp2x2 v)
         {
-            return (asuint(v.c0) * uint2(0x8B65ADB7u, 0xDFF4F563u) + 
-                    asuint(v.c1) * uint2(0x7069770Du, 0xD1224537u)) + 0xE99ED6F3u;
+            return (fpmath.asuint(v.c0) * uint2(0x6D2523B1u, 0x6E2BF6A9u) + 
+                    fpmath.asuint(v.c1) * uint2(0xCC74B3B7u, 0x83B58237u)) + 0x833E3E29u;
         }
 
     }

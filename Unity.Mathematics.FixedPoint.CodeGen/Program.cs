@@ -28,13 +28,13 @@ namespace Unity.Mathematics.Mathematics.CodeGen
                 throw new InvalidOperationException($"Unable to get path of current assembly from `{typeof(MainClass).Assembly.Location}`");
             }
 
-            var implementationDirectory = new DirectoryInfo(Path.Combine(parent.FullName, "Unity.Mathematics"));
+            var implementationDirectory = new DirectoryInfo(Path.Combine(parent.FullName, "Unity.Mathematics.FixedPoint"));
             if (!implementationDirectory.Exists)
             {
                 throw new InvalidOperationException($"The directory `{implementationDirectory.FullName}` must exist");
             }
 
-            var testDirectory = new DirectoryInfo(Path.Combine(parent.FullName, "NUnitTestProject1/Tests/Shared"));
+            var testDirectory = new DirectoryInfo(Path.Combine(parent.FullName, "Tests/Tests/Shared"));
             if (!implementationDirectory.Exists)
             {
                 throw new InvalidOperationException($"The directory `{testDirectory.FullName}` must exist");

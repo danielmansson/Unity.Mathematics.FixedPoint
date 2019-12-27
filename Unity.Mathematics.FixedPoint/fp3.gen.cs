@@ -9,10 +9,11 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
+using static Unity.Mathematics.math;
 
 #pragma warning disable 0660, 0661
 
-namespace Unity.Mathematics
+namespace Unity.Mathematics.FixedPoint
 {
     [DebuggerTypeProxy(typeof(fp3.DebuggerProxy))]
     [System.Serializable]
@@ -1285,7 +1286,7 @@ namespace Unity.Mathematics
 
         /// <summary>Returns a hash code for the fp3.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)math.hash(this); }
+        public override int GetHashCode() { return (int)fpmath.hash(this); }
 
 
         /// <summary>Returns a string representation of the fp3.</summary>
@@ -1317,7 +1318,7 @@ namespace Unity.Mathematics
 
     }
 
-    public static partial class math
+    public static partial class fpmath
     {
         /// <summary>Returns a fp3 vector constructed from three fp values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1359,7 +1360,7 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(fp3 v)
         {
-            return csum(asuint(v) * uint3(0xA47EC335u, 0xA477DF57u, 0xC4B1493Fu)) + 0xBA0966D3u;
+            return math.csum(fpmath.asuint(v) * uint3(0x5BA2C50Bu, 0x8C455ACBu, 0xCD266C89u)) + 0xF1852A33u;
         }
 
         /// <summary>
@@ -1370,7 +1371,7 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint3 hashwide(fp3 v)
         {
-            return (asuint(v) * uint3(0xAFBEE253u, 0x5B419C01u, 0x515D90F5u)) + 0xEC9F68F3u;
+            return (fpmath.asuint(v) * uint3(0x77E35E77u, 0x863E3729u, 0xE191B035u)) + 0x68586FAFu;
         }
 
         /// <summary>Returns the result of specified shuffling of the components from two fp3 vectors into a fp value.</summary>

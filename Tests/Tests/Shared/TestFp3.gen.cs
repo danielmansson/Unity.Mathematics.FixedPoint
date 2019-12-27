@@ -7,15 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using NUnit.Framework;
+using static Unity.Mathematics.FixedPoint.fpmath;
 using static Unity.Mathematics.math;
-using Burst.Compiler.IL.Tests;
 
-namespace Unity.Mathematics.Tests
+namespace Unity.Mathematics.FixedPoint.Tests
 {
     [TestFixture]
     public class TestFp3
     {
-        [TestCompiler]
         public static void fp3_zero()
         {
             TestUtils.AreEqual(fp3.zero.x, (fp)0);
@@ -23,7 +22,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(fp3.zero.z, (fp)0);
         }
 
-        [TestCompiler]
         public static void fp3_constructor()
         {
             fp3 a = new fp3(1, 2, 3);
@@ -32,7 +30,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(a.z, 3);
         }
 
-        [TestCompiler]
         public static void fp3_scalar_constructor()
         {
             fp3 a = new fp3(17.0m);
@@ -41,7 +38,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(a.z, 17.0m);
         }
 
-        [TestCompiler]
         public static void fp3_static_constructor()
         {
             fp3 a = fp3(1, 2, 3);
@@ -50,7 +46,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(a.z, 3);
         }
 
-        [TestCompiler]
         public static void fp3_static_scalar_constructor()
         {
             fp3 a = fp3(17.0m);
@@ -59,7 +54,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(a.z, 17.0m);
         }
 
-        [TestCompiler]
         public static void fp3_operator_equal_wide_wide()
         {
             fp3 a0 = fp3(-135.18924m, -49.0941162m, 169.129822m);
@@ -83,7 +77,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(a3 == b3, r3);
         }
 
-        [TestCompiler]
         public static void fp3_operator_equal_wide_scalar()
         {
             fp3 a0 = fp3(65.6712m, 404.415527m, -269.730164m);
@@ -107,7 +100,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(a3 == b3, r3);
         }
 
-        [TestCompiler]
         public static void fp3_operator_equal_scalar_wide()
         {
             fp a0 = (36.38391m);
@@ -131,7 +123,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(a3 == b3, r3);
         }
 
-        [TestCompiler]
         public static void fp3_operator_not_equal_wide_wide()
         {
             fp3 a0 = fp3(279.994141m, -43.34201m, -465.724731m);
@@ -155,7 +146,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(a3 != b3, r3);
         }
 
-        [TestCompiler]
         public static void fp3_operator_not_equal_wide_scalar()
         {
             fp3 a0 = fp3(-155.4411m, -19.4266052m, 174.633057m);
@@ -179,7 +169,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(a3 != b3, r3);
         }
 
-        [TestCompiler]
         public static void fp3_operator_not_equal_scalar_wide()
         {
             fp a0 = (478.353149m);
@@ -203,7 +192,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(a3 != b3, r3);
         }
 
-        [TestCompiler]
         public static void fp3_shuffle_result_1()
         {
             fp3 a = fp3(0, 1, 2);
@@ -217,7 +205,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(shuffle(a, b, ShuffleComponent.RightZ), (5));
         }
 
-        [TestCompiler]
         public static void fp3_shuffle_result_2()
         {
             fp3 a = fp3(0, 1, 2);
@@ -241,7 +228,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(shuffle(a, b, ShuffleComponent.LeftY, ShuffleComponent.LeftZ), fp2(1, 2));
         }
 
-        [TestCompiler]
         public static void fp3_shuffle_result_3()
         {
             fp3 a = fp3(0, 1, 2);
@@ -265,7 +251,6 @@ namespace Unity.Mathematics.Tests
             TestUtils.AreEqual(shuffle(a, b, ShuffleComponent.RightY, ShuffleComponent.LeftX, ShuffleComponent.RightZ), fp3(4, 0, 5));
         }
 
-        [TestCompiler]
         public static void fp3_shuffle_result_4()
         {
             fp3 a = fp3(0, 1, 2);

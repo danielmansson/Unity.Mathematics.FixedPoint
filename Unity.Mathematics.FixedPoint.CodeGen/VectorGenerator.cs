@@ -246,18 +246,18 @@ namespace Unity.Mathematics.Mathematics.CodeGen
                     if (rows == 1 && columns == 1)  // don't generate type1x1
                         continue;
 
-                    if (columns == 1)
-                        vectorGenerator.WriteType("half", rows, columns, 0);
+                 //   if (columns == 1)
+                  //      vectorGenerator.WriteType("half", rows, columns, 0);
 
                     if (rows == 1)  // ignore row vectors for now
                         continue;
 
-                    vectorGenerator.WriteType("bool", rows, columns, Features.BitwiseLogic);
-                    vectorGenerator.WriteType("int", rows, columns, Features.All);
-                    vectorGenerator.WriteType("uint", rows, columns, Features.All);
+                  //  vectorGenerator.WriteType("bool", rows, columns, Features.BitwiseLogic);
+                  //  vectorGenerator.WriteType("int", rows, columns, Features.All);
+                  //  vectorGenerator.WriteType("uint", rows, columns, Features.All);
                     vectorGenerator.WriteType("fp", rows, columns, Features.Arithmetic | Features.UnaryNegation);
-                    vectorGenerator.WriteType("float", rows, columns, Features.Arithmetic | Features.UnaryNegation);
-                    vectorGenerator.WriteType("double", rows, columns, Features.Arithmetic | Features.UnaryNegation);
+                   // vectorGenerator.WriteType("float", rows, columns, Features.Arithmetic | Features.UnaryNegation);
+                   // vectorGenerator.WriteType("double", rows, columns, Features.Arithmetic | Features.UnaryNegation);
                 }
             }
 
@@ -503,9 +503,10 @@ namespace Unity.Mathematics.Mathematics.CodeGen
                 str.Append("using System.Runtime.InteropServices;\n");  // for MarshalAs
             if (m_Columns == 1)
                 str.Append("using System.Diagnostics;\n");   // for DebuggerTypeProxy
+            str.Append("using static Unity.Mathematics.math;\n");
             str.Append("\n");
             str.Append("#pragma warning disable 0660, 0661\n\n");
-            str.Append("namespace Unity.Mathematics\n");
+            str.Append("namespace Unity.Mathematics.FixedPoint\n");
             str.Append("{\n");
 
             if (m_Columns == 1)
@@ -578,7 +579,7 @@ namespace Unity.Mathematics.Mathematics.CodeGen
 
             str.Append("\t}\n\n");
 
-            str.Append("\tpublic static partial class math\n");
+            str.Append("\tpublic static partial class fpmath\n");
             str.Append("\t{\n");
             str.Append(mathStr);
             str.Append("\t}\n}\n");
@@ -762,15 +763,16 @@ namespace Unity.Mathematics.Mathematics.CodeGen
             str.Append("using System;\n");
             str.Append("using System.Runtime.CompilerServices;\n");
             str.Append("\n");
-            str.Append("namespace Unity.Mathematics\n");
+            str.Append("namespace Unity.Mathematics.FixedPoint\n");
             str.Append("{\n");
-            str.Append("\tpartial class math\n");
+            str.Append("\tpartial class fpmath\n");
             str.Append("\t{\n");
 
-            GenerateMulImplementations("float", str);
+          /*  GenerateMulImplementations("float", str);
             GenerateMulImplementations("double", str);
             GenerateMulImplementations("int", str);
-            GenerateMulImplementations("uint", str);
+            GenerateMulImplementations("uint", str);*/
+            GenerateMulImplementations("fp", str);
 
             str.Append("\t}\n");
             str.Append("}\n");
@@ -1471,7 +1473,7 @@ namespace Unity.Mathematics.Mathematics.CodeGen
             str.Append("\t\t{\n");
 
             str.AppendFormat("\t\t\treturn ");
-            str.Append(wide ? "(" : "csum(");
+            str.Append(wide ? "(" : "math.csum(");
             
             if (m_BaseType == "bool")
             {
@@ -1506,14 +1508,14 @@ namespace Unity.Mathematics.Mathematics.CodeGen
                             if (m_Rows == 1)
                                 columnName = "v.value";
                             else if(m_Rows == 2)
-                                columnName = "uint2(v.x.value, v.y.value)";
+                                columnName = "fpmath.uint2(v.x.value, v.y.value)";
                             else if (m_Rows == 3)
-                                columnName = "uint3(v.x.value, v.y.value, v.z.value)";
+                                columnName = "fpmath.uint3(v.x.value, v.y.value, v.z.value)";
                             else if (m_Rows == 4)
-                                columnName = "uint4(v.x.value, v.y.value, v.z.value, v.w.value)";
+                                columnName = "fpmath.uint4(v.x.value, v.y.value, v.z.value, v.w.value)";
                         }
                         else
-                            columnName = "asuint(" + columnName + ")";
+                            columnName = "fpmath.asuint(" + columnName + ")";
                     }
                         
                     str.Append(columnName);
@@ -1713,7 +1715,7 @@ namespace Unity.Mathematics.Mathematics.CodeGen
         {
             str.AppendFormat("\t\t/// <summary>Returns a hash code for the {0}.</summary>\n", m_TypeName);
             str.Append("\t\t[MethodImpl(MethodImplOptions.AggressiveInlining)]\n");
-            str.Append("\t\tpublic override int GetHashCode() { return (int)math.hash(this); }\n\n");
+            str.Append("\t\tpublic override int GetHashCode() { return (int)fpmath.hash(this); }\n\n");
         }
 
 
@@ -1919,7 +1921,6 @@ namespace Unity.Mathematics.Mathematics.CodeGen
 
         private void BeginTest(StringBuilder str, string name)
         {
-            str.Append("\t\t[TestCompiler]\n");
             str.AppendFormat("\t\tpublic static void {0}()\n", name);
             str.Append("\t\t{\n");
         }
@@ -2625,14 +2626,14 @@ namespace Unity.Mathematics.Mathematics.CodeGen
         private void GenerateMathTests(StringBuilder str)
         {
             str.Append("using NUnit.Framework;\n");
-            str.Append("using static Unity.Mathematics.math;\n");
-            str.Append("using Burst.Compiler.IL.Tests;\n\n");
-            str.Append("namespace Unity.Mathematics.Tests\n");
+            str.Append("using static Unity.Mathematics.FixedPoint.fpmath;\n");
+            str.Append("using static Unity.Mathematics.math;\n\n");
+            str.Append("namespace Unity.Mathematics.FixedPoint.Tests\n");
             str.Append("{\n");
             str.Append("\t[TestFixture]\n");
             str.Append("\tpublic partial class TestMath\n");
             str.Append("\t{\n");
-
+            /*
             GenerateComponentWiseTest(str, "abs", new int[,] { { 0 }, { -7 }, { 11 }, { -2147483647 }, { -2147483648 } }, new int[] { 0, 7, 11, 2147483647, -2147483648 }, 4);
             
             GenerateComponentWiseTestFloatAndDouble(str, "abs", new double[,] { { 0.0 }, { -1.1 }, { 2.2 }, { double.NegativeInfinity }, { double.PositiveInfinity } }, new double[] { 0.0, 1.1, 2.2, double.PositiveInfinity, double.PositiveInfinity }, 0, 0, false);
@@ -2968,7 +2969,7 @@ namespace Unity.Mathematics.Mathematics.CodeGen
 
             GenerateComponentWiseTest(str, "ceilpow2", new ulong[,] { { 0UL }, { 1UL }, { 2UL }, { 3UL }, { 1019642234UL }, { 1823423423UL }, { 2147483648UL }, { 4294967295UL }, { 4294967296UL }, { 7227372236554874814UL }, { 10223372036854775808UL } },
                                                        new ulong[] { 0UL, 1UL, 2UL, 4UL, 1073741824UL, 2147483648UL, 2147483648UL, 4294967296UL, 4294967296UL, 9223372036854775808UL, 0L }, 1);
-
+            */
             GenerateFpComponentWiseTests(str);
 
             str.Append("\n\t}");
@@ -3155,9 +3156,9 @@ namespace Unity.Mathematics.Mathematics.CodeGen
             StringBuilder mathStr = new StringBuilder();
             
             str.Append("using NUnit.Framework;\n");
-            str.Append("using static Unity.Mathematics.math;\n");
-            str.Append("using Burst.Compiler.IL.Tests;\n\n");
-            str.Append("namespace Unity.Mathematics.Tests\n");
+            str.Append("using static Unity.Mathematics.FixedPoint.fpmath;\n");
+            str.Append("using static Unity.Mathematics.math;\n\n");
+            str.Append("namespace Unity.Mathematics.FixedPoint.Tests\n");
             str.Append("{\n");
             str.Append("\t[TestFixture]\n");
             str.AppendFormat("\tpublic class Test{0}\n", UpperCaseFirstLetter(m_TypeName));

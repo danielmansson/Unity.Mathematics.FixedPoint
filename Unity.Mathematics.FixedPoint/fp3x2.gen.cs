@@ -8,10 +8,11 @@
 //------------------------------------------------------------------------------
 using System;
 using System.Runtime.CompilerServices;
+using static Unity.Mathematics.math;
 
 #pragma warning disable 0660, 0661
 
-namespace Unity.Mathematics
+namespace Unity.Mathematics.FixedPoint
 {
     [System.Serializable]
     public partial struct fp3x2 : System.IEquatable<fp3x2>, IFormattable
@@ -289,7 +290,7 @@ namespace Unity.Mathematics
 
         /// <summary>Returns a hash code for the fp3x2.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)math.hash(this); }
+        public override int GetHashCode() { return (int)fpmath.hash(this); }
 
 
         /// <summary>Returns a string representation of the fp3x2.</summary>
@@ -308,7 +309,7 @@ namespace Unity.Mathematics
 
     }
 
-    public static partial class math
+    public static partial class fpmath
     {
         /// <summary>Returns a fp3x2 matrix constructed from two fp3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -358,8 +359,8 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(fp3x2 v)
         {
-            return csum(asuint(v.c0) * uint3(0xE133B0B3u, 0xC3E0A3B9u, 0xFE31134Fu) + 
-                        asuint(v.c1) * uint3(0x712A34D7u, 0x9D77A59Bu, 0x4942CA39u)) + 0xB40EC62Du;
+            return math.csum(fpmath.asuint(v.c0) * uint3(0xD4DFF6D3u, 0xCB634F4Du, 0x9B13B92Du) + 
+                        fpmath.asuint(v.c1) * uint3(0x4ABF0813u, 0x86068063u, 0xD75513F9u)) + 0x5AB3E8CDu;
         }
 
         /// <summary>
@@ -370,8 +371,8 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint3 hashwide(fp3x2 v)
         {
-            return (asuint(v.c0) * uint3(0x565ED63Fu, 0x93C30C2Bu, 0xDCAF0351u) + 
-                    asuint(v.c1) * uint3(0x6E050B01u, 0x750FDBF5u, 0x7F3DD499u)) + 0x52EAAEBBu;
+            return (fpmath.asuint(v.c0) * uint3(0x676E8407u, 0xB36DE767u, 0x6FCA387Du) + 
+                    fpmath.asuint(v.c1) * uint3(0xAF0F3103u, 0xE4A056C7u, 0x841D8225u)) + 0xC9393C7Du;
         }
 
     }

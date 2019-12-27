@@ -8,10 +8,11 @@
 //------------------------------------------------------------------------------
 using System;
 using System.Runtime.CompilerServices;
+using static Unity.Mathematics.math;
 
 #pragma warning disable 0660, 0661
 
-namespace Unity.Mathematics
+namespace Unity.Mathematics.FixedPoint
 {
     [System.Serializable]
     public partial struct fp4x3 : System.IEquatable<fp4x3>, IFormattable
@@ -298,7 +299,7 @@ namespace Unity.Mathematics
 
         /// <summary>Returns a hash code for the fp4x3.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)math.hash(this); }
+        public override int GetHashCode() { return (int)fpmath.hash(this); }
 
 
         /// <summary>Returns a string representation of the fp4x3.</summary>
@@ -317,7 +318,7 @@ namespace Unity.Mathematics
 
     }
 
-    public static partial class math
+    public static partial class fpmath
     {
         /// <summary>Returns a fp4x3 matrix constructed from three fp4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -370,9 +371,9 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(fp4x3 v)
         {
-            return csum(asuint(v.c0) * uint4(0x841D8225u, 0xC9393C7Du, 0xD42EAFA3u, 0xD9AFD06Du) + 
-                        asuint(v.c1) * uint4(0x97A65421u, 0x7809205Fu, 0x9C9F0823u, 0x5A9CA13Bu) + 
-                        asuint(v.c2) * uint4(0xAFCDD5EFu, 0xA88D187Du, 0xCF6EBA1Du, 0x9D88E5A1u)) + 0xEADF0775u;
+            return math.csum(fpmath.asuint(v.c0) * uint4(0x5C4D6CEDu, 0xF9137117u, 0xE857DCE1u, 0xF62213C5u) + 
+                        fpmath.asuint(v.c1) * uint4(0x9CDAA959u, 0xAA269ABFu, 0xD54BA36Fu, 0xFD0847B9u) + 
+                        fpmath.asuint(v.c2) * uint4(0x8189A683u, 0xB139D651u, 0xE7579997u, 0xEF7D56C7u)) + 0x66F38F0Bu;
         }
 
         /// <summary>
@@ -383,9 +384,9 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint4 hashwide(fp4x3 v)
         {
-            return (asuint(v.c0) * uint4(0x747A9D7Bu, 0x4111F799u, 0xB5F05AF1u, 0xFD80290Bu) + 
-                    asuint(v.c1) * uint4(0x8B65ADB7u, 0xDFF4F563u, 0x7069770Du, 0xD1224537u) + 
-                    asuint(v.c2) * uint4(0xE99ED6F3u, 0x48125549u, 0xEEE2123Bu, 0xE3AD9FE5u)) + 0xCE1CF8BFu;
+            return (fpmath.asuint(v.c0) * uint4(0x624256A3u, 0x5292ADE1u, 0xD2E590E5u, 0xF25BE857u) + 
+                    fpmath.asuint(v.c1) * uint4(0x9BC17CE7u, 0xC8B86851u, 0x64095221u, 0xADF428FFu) + 
+                    fpmath.asuint(v.c2) * uint4(0xA3977109u, 0x745ED837u, 0x9CDC88F5u, 0xFA62D721u)) + 0x7E4DB1CFu;
         }
 
     }

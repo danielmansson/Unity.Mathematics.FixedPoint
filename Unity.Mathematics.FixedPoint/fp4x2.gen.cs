@@ -8,10 +8,11 @@
 //------------------------------------------------------------------------------
 using System;
 using System.Runtime.CompilerServices;
+using static Unity.Mathematics.math;
 
 #pragma warning disable 0660, 0661
 
-namespace Unity.Mathematics
+namespace Unity.Mathematics.FixedPoint
 {
     [System.Serializable]
     public partial struct fp4x2 : System.IEquatable<fp4x2>, IFormattable
@@ -290,7 +291,7 @@ namespace Unity.Mathematics
 
         /// <summary>Returns a hash code for the fp4x2.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)math.hash(this); }
+        public override int GetHashCode() { return (int)fpmath.hash(this); }
 
 
         /// <summary>Returns a string representation of the fp4x2.</summary>
@@ -309,7 +310,7 @@ namespace Unity.Mathematics
 
     }
 
-    public static partial class math
+    public static partial class fpmath
     {
         /// <summary>Returns a fp4x2 matrix constructed from two fp4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -361,8 +362,8 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(fp4x2 v)
         {
-            return csum(asuint(v.c0) * uint4(0x68EEE0F5u, 0xBC3B0A59u, 0x816EFB5Du, 0xA24E82B7u) + 
-                        asuint(v.c1) * uint4(0x45A22087u, 0xFC104C3Bu, 0x5FFF6B19u, 0x5E6CBF3Bu)) + 0xB546F2A5u;
+            return math.csum(fpmath.asuint(v.c0) * uint4(0xE121E6ADu, 0xC9CA1249u, 0x69B60C81u, 0xE0EB6C25u) + 
+                        fpmath.asuint(v.c1) * uint4(0xF648BEABu, 0x6BDB2B07u, 0xEF63C699u, 0x9001903Fu)) + 0xA895B9CDu;
         }
 
         /// <summary>
@@ -373,8 +374,8 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint4 hashwide(fp4x2 v)
         {
-            return (asuint(v.c0) * uint4(0xBBCF63E7u, 0xC53F4755u, 0x6985C229u, 0xE133B0B3u) + 
-                    asuint(v.c1) * uint4(0xC3E0A3B9u, 0xFE31134Fu, 0x712A34D7u, 0x9D77A59Bu)) + 0x4942CA39u;
+            return (fpmath.asuint(v.c0) * uint4(0x9D23B201u, 0x4B01D3E1u, 0x7461CA0Du, 0x79725379u) + 
+                    fpmath.asuint(v.c1) * uint4(0xD6258E5Bu, 0xEE390C97u, 0x9C8A2F05u, 0x4DDC6509u)) + 0x7CF083CBu;
         }
 
     }

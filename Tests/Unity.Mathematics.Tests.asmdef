@@ -4,6 +4,8 @@
         "TestAssemblies"
     ],
     "references": [
+        "Unity.Mathematics.FixedPoint",
+        "Unity.Mathematics.Tests",
         "Unity.Mathematics"
     ],
     "includePlatforms": [
