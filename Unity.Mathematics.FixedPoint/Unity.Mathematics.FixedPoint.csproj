@@ -63,6 +63,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="fp2.gen.cs" />
     <Compile Include="fp2x2.gen.cs" />
     <Compile Include="fp2x3.gen.cs" />
@@ -76,7 +77,11 @@
     <Compile Include="fp4x3.gen.cs" />
     <Compile Include="fp4x4.gen.cs" />
     <Compile Include="fpmath.cs" />
+    <Compile Include="fp\fp.cs" />
+    <Compile Include="fp\fp_sin_lut.cs" />
+    <Compile Include="fp\fp_tan_lut.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
