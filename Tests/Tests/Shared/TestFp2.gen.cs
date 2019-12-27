@@ -15,12 +15,14 @@ namespace Unity.Mathematics.FixedPoint.Tests
     [TestFixture]
     public class TestFp2
     {
+        [Test]
         public static void fp2_zero()
         {
             TestUtils.AreEqual(fp2.zero.x, (fp)0);
             TestUtils.AreEqual(fp2.zero.y, (fp)0);
         }
 
+        [Test]
         public static void fp2_constructor()
         {
             fp2 a = new fp2(1, 2);
@@ -28,6 +30,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a.y, 2);
         }
 
+        [Test]
         public static void fp2_scalar_constructor()
         {
             fp2 a = new fp2(17.0m);
@@ -35,6 +38,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a.y, 17.0m);
         }
 
+        [Test]
         public static void fp2_static_constructor()
         {
             fp2 a = fp2(1, 2);
@@ -42,6 +46,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a.y, 2);
         }
 
+        [Test]
         public static void fp2_static_scalar_constructor()
         {
             fp2 a = fp2(17.0m);
@@ -49,6 +54,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a.y, 17.0m);
         }
 
+        [Test]
         public static void fp2_operator_equal_wide_wide()
         {
             fp2 a0 = fp2(-135.18924m, -49.0941162m);
@@ -72,6 +78,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 == b3, r3);
         }
 
+        [Test]
         public static void fp2_operator_equal_wide_scalar()
         {
             fp2 a0 = fp2(65.6712m, 404.415527m);
@@ -95,6 +102,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 == b3, r3);
         }
 
+        [Test]
         public static void fp2_operator_equal_scalar_wide()
         {
             fp a0 = (36.38391m);
@@ -118,6 +126,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 == b3, r3);
         }
 
+        [Test]
         public static void fp2_operator_not_equal_wide_wide()
         {
             fp2 a0 = fp2(279.994141m, -43.34201m);
@@ -141,6 +150,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 != b3, r3);
         }
 
+        [Test]
         public static void fp2_operator_not_equal_wide_scalar()
         {
             fp2 a0 = fp2(-155.4411m, -19.4266052m);
@@ -164,6 +174,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 != b3, r3);
         }
 
+        [Test]
         public static void fp2_operator_not_equal_scalar_wide()
         {
             fp a0 = (478.353149m);
@@ -187,6 +198,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 != b3, r3);
         }
 
+        [Test]
         public static void fp2_shuffle_result_1()
         {
             fp2 a = fp2(0, 1);
@@ -198,6 +210,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(shuffle(a, b, ShuffleComponent.RightY), (3));
         }
 
+        [Test]
         public static void fp2_shuffle_result_2()
         {
             fp2 a = fp2(0, 1);
@@ -221,6 +234,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(shuffle(a, b, ShuffleComponent.RightY, ShuffleComponent.RightY), fp2(3, 3));
         }
 
+        [Test]
         public static void fp2_shuffle_result_3()
         {
             fp2 a = fp2(0, 1);
@@ -244,6 +258,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(shuffle(a, b, ShuffleComponent.RightY, ShuffleComponent.LeftY, ShuffleComponent.LeftY), fp3(3, 1, 1));
         }
 
+        [Test]
         public static void fp2_shuffle_result_4()
         {
             fp2 a = fp2(0, 1);

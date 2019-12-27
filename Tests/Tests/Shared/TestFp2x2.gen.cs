@@ -15,6 +15,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
     [TestFixture]
     public class TestFp2x2
     {
+        [Test]
         public static void fp2x2_zero()
         {
             TestUtils.AreEqual(fp2x2.zero.c0.x, (fp)0);
@@ -23,6 +24,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(fp2x2.zero.c1.y, (fp)0);
         }
 
+        [Test]
         public static void fp2x2_identity()
         {
             TestUtils.AreEqual(fp2x2.identity.c0.x, (fp)1);
@@ -31,6 +33,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(fp2x2.identity.c1.y, (fp)1);
         }
 
+        [Test]
         public static void fp2x2_operator_equal_wide_wide()
         {
             fp2x2 a0 = fp2x2(-135.18924m, -49.0941162m, 169.129822m, 240.8053m);
@@ -54,6 +57,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 == b3, r3);
         }
 
+        [Test]
         public static void fp2x2_operator_equal_wide_scalar()
         {
             fp2x2 a0 = fp2x2(65.6712m, 404.415527m, -269.730164m, 83.6306152m);
@@ -77,6 +81,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 == b3, r3);
         }
 
+        [Test]
         public static void fp2x2_operator_equal_scalar_wide()
         {
             fp a0 = (36.38391m);
@@ -100,6 +105,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 == b3, r3);
         }
 
+        [Test]
         public static void fp2x2_operator_not_equal_wide_wide()
         {
             fp2x2 a0 = fp2x2(279.994141m, -43.34201m, -465.724731m, 317.466553m);
@@ -123,6 +129,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 != b3, r3);
         }
 
+        [Test]
         public static void fp2x2_operator_not_equal_wide_scalar()
         {
             fp2x2 a0 = fp2x2(-155.4411m, -19.4266052m, 174.633057m, 507.920715m);
@@ -146,6 +153,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 != b3, r3);
         }
 
+        [Test]
         public static void fp2x2_operator_not_equal_scalar_wide()
         {
             fp a0 = (478.353149m);

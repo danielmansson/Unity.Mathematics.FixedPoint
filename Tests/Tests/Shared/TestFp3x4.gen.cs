@@ -15,6 +15,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
     [TestFixture]
     public class TestFp3x4
     {
+        [Test]
         public static void fp3x4_zero()
         {
             TestUtils.AreEqual(fp3x4.zero.c0.x, (fp)0);
@@ -31,6 +32,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(fp3x4.zero.c3.z, (fp)0);
         }
 
+        [Test]
         public static void fp3x4_operator_equal_wide_wide()
         {
             fp3x4 a0 = fp3x4(-135.18924m, -49.0941162m, 169.129822m, 240.8053m, 314.7392m, 442.393m, 177.924438m, 335.5334m, 168.15448m, 350.729553m, 367.178467m, 46.9414673m);
@@ -54,6 +56,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 == b3, r3);
         }
 
+        [Test]
         public static void fp3x4_operator_equal_wide_scalar()
         {
             fp3x4 a0 = fp3x4(65.6712m, 404.415527m, -269.730164m, 83.6306152m, 152.9945m, -155.868286m, 314.671265m, 386.365173m, 290.04895m, -132.6352m, -65.66748m, -69.68326m);
@@ -77,6 +80,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 == b3, r3);
         }
 
+        [Test]
         public static void fp3x4_operator_equal_scalar_wide()
         {
             fp a0 = (36.38391m);
@@ -100,6 +104,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 == b3, r3);
         }
 
+        [Test]
         public static void fp3x4_operator_not_equal_wide_wide()
         {
             fp3x4 a0 = fp3x4(279.994141m, -43.34201m, -465.724731m, 317.466553m, 85.7149658m, 360.8905m, 366.081543m, 154.542847m, 332.4262m, 397.11322m, -431.374969m, 489.0108m);
@@ -123,6 +128,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 != b3, r3);
         }
 
+        [Test]
         public static void fp3x4_operator_not_equal_wide_scalar()
         {
             fp3x4 a0 = fp3x4(-155.4411m, -19.4266052m, 174.633057m, 507.920715m, 59.177063m, 171.151489m, -58.92328m, -398.176849m, 492.20105m, -165.241516m, 270.341m, -380.243256m);
@@ -146,6 +152,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 != b3, r3);
         }
 
+        [Test]
         public static void fp3x4_operator_not_equal_scalar_wide()
         {
             fp a0 = (478.353149m);

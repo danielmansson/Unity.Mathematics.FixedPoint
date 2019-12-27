@@ -15,6 +15,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
     [TestFixture]
     public partial class TestMath
     {
+        [Test]
         public static void abs_fp()
         {
             TestUtils.AreEqual(abs(0.0m), 0.0m);
@@ -22,22 +23,26 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(abs(2.2m), 2.2m);
         }
 
+        [Test]
         public static void abs_fp2()
         {
             TestUtils.AreEqual(abs(fp2(0.0m, -1.1m)), fp2(0.0m, 1.1m));
             TestUtils.AreEqual(abs(fp2(2.2m, 2.2m)), fp2(2.2m, 2.2m));
         }
 
+        [Test]
         public static void abs_fp3()
         {
             TestUtils.AreEqual(abs(fp3(0.0m, -1.1m, 2.2m)), fp3(0.0m, 1.1m, 2.2m));
         }
 
+        [Test]
         public static void abs_fp4()
         {
             TestUtils.AreEqual(abs(fp4(0.0m, -1.1m, 2.2m, 2.2m)), fp4(0.0m, 1.1m, 2.2m, 2.2m));
         }
 
+        [Test]
         public static void sin_fp()
         {
             TestUtils.AreEqual(sin(-1000000.0m), 0.34999350217129295m, 200000000, false);
@@ -47,6 +52,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(sin(1000000.0m), -0.34999350217129295m, 200000000, false);
         }
 
+        [Test]
         public static void sin_fp2()
         {
             TestUtils.AreEqual(sin(fp2(-1000000.0m, -1.2m)), fp2(0.34999350217129295m, -0.93203908596722635m), 200000000, false);
@@ -54,18 +60,21 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(sin(fp2(1000000.0m, 1000000.0m)), fp2(-0.34999350217129295m, -0.34999350217129295m), 200000000, false);
         }
 
+        [Test]
         public static void sin_fp3()
         {
             TestUtils.AreEqual(sin(fp3(-1000000.0m, -1.2m, 0.0m)), fp3(0.34999350217129295m, -0.93203908596722635m, 0.0m), 200000000, false);
             TestUtils.AreEqual(sin(fp3(1.2m, 1000000.0m, 1000000.0m)), fp3(0.93203908596722635m, -0.34999350217129295m, -0.34999350217129295m), 200000000, false);
         }
 
+        [Test]
         public static void sin_fp4()
         {
             TestUtils.AreEqual(sin(fp4(-1000000.0m, -1.2m, 0.0m, 1.2m)), fp4(0.34999350217129295m, -0.93203908596722635m, 0.0m, 0.93203908596722635m), 200000000, false);
             TestUtils.AreEqual(sin(fp4(1000000.0m, 1000000.0m, 1000000.0m, 1000000.0m)), fp4(-0.34999350217129295m, -0.34999350217129295m, -0.34999350217129295m, -0.34999350217129295m), 200000000, false);
         }
 
+        [Test]
         public static void cos_fp()
         {
             TestUtils.AreEqual(cos(-1000000.0m), 0.93675212753314479m, 200000000, false);
@@ -75,6 +84,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(cos(1000000.0m), 0.93675212753314479m, 200000000, false);
         }
 
+        [Test]
         public static void cos_fp2()
         {
             TestUtils.AreEqual(cos(fp2(-1000000.0m, -1.2m)), fp2(0.93675212753314479m, 0.36235775447667358m), 200000000, false);
@@ -82,18 +92,21 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(cos(fp2(1000000.0m, 1000000.0m)), fp2(0.93675212753314479m, 0.93675212753314479m), 200000000, false);
         }
 
+        [Test]
         public static void cos_fp3()
         {
             TestUtils.AreEqual(cos(fp3(-1000000.0m, -1.2m, 0.0m)), fp3(0.93675212753314479m, 0.36235775447667358m, 1.0m), 200000000, false);
             TestUtils.AreEqual(cos(fp3(1.2m, 1000000.0m, 1000000.0m)), fp3(0.36235775447667358m, 0.93675212753314479m, 0.93675212753314479m), 200000000, false);
         }
 
+        [Test]
         public static void cos_fp4()
         {
             TestUtils.AreEqual(cos(fp4(-1000000.0m, -1.2m, 0.0m, 1.2m)), fp4(0.93675212753314479m, 0.36235775447667358m, 1.0m, 0.36235775447667358m), 200000000, false);
             TestUtils.AreEqual(cos(fp4(1000000.0m, 1000000.0m, 1000000.0m, 1000000.0m)), fp4(0.93675212753314479m, 0.93675212753314479m, 0.93675212753314479m, 0.93675212753314479m), 200000000, false);
         }
 
+        [Test]
         public static void tan_fp()
         {
             TestUtils.AreEqual(tan(-1000000.0m), 0.373624453987599m, 37200899080192L, false);
@@ -103,6 +116,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(tan(1000000.0m), -0.373624453987599m, 37200899080192L, false);
         }
 
+        [Test]
         public static void tan_fp2()
         {
             TestUtils.AreEqual(tan(fp2(-1000000.0m, -1.2m)), fp2(0.373624453987599m, -2.57215162212632m), 37200899080192L, false);
@@ -110,18 +124,21 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(tan(fp2(1000000.0m, 1000000.0m)), fp2(-0.373624453987599m, -0.373624453987599m), 37200899080192L, false);
         }
 
+        [Test]
         public static void tan_fp3()
         {
             TestUtils.AreEqual(tan(fp3(-1000000.0m, -1.2m, 0.0m)), fp3(0.373624453987599m, -2.57215162212632m, 0.0m), 37200899080192L, false);
             TestUtils.AreEqual(tan(fp3(1.2m, 1000000.0m, 1000000.0m)), fp3(2.57215162212632m, -0.373624453987599m, -0.373624453987599m), 37200899080192L, false);
         }
 
+        [Test]
         public static void tan_fp4()
         {
             TestUtils.AreEqual(tan(fp4(-1000000.0m, -1.2m, 0.0m, 1.2m)), fp4(0.373624453987599m, -2.57215162212632m, 0.0m, 2.57215162212632m), 37200899080192L, false);
             TestUtils.AreEqual(tan(fp4(1000000.0m, 1000000.0m, 1000000.0m, 1000000.0m)), fp4(-0.373624453987599m, -0.373624453987599m, -0.373624453987599m, -0.373624453987599m), 37200899080192L, false);
         }
 
+        [Test]
         public static void atan_fp()
         {
             TestUtils.AreEqual(atan(-1000000.0m), -1.570795326794897m, 37200899080192L, false);
@@ -131,6 +148,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(atan(1000000.0m), 1.570795326794897m, 37200899080192L, false);
         }
 
+        [Test]
         public static void atan_fp2()
         {
             TestUtils.AreEqual(atan(fp2(-1000000.0m, -1.2m)), fp2(-1.570795326794897m, -0.8760580505981934m), 37200899080192L, false);
@@ -138,18 +156,21 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(atan(fp2(1000000.0m, 1000000.0m)), fp2(1.570795326794897m, 1.570795326794897m), 37200899080192L, false);
         }
 
+        [Test]
         public static void atan_fp3()
         {
             TestUtils.AreEqual(atan(fp3(-1000000.0m, -1.2m, 0.0m)), fp3(-1.570795326794897m, -0.8760580505981934m, 0.0m), 37200899080192L, false);
             TestUtils.AreEqual(atan(fp3(1.2m, 1000000.0m, 1000000.0m)), fp3(0.8760580505981934m, 1.570795326794897m, 1.570795326794897m), 37200899080192L, false);
         }
 
+        [Test]
         public static void atan_fp4()
         {
             TestUtils.AreEqual(atan(fp4(-1000000.0m, -1.2m, 0.0m, 1.2m)), fp4(-1.570795326794897m, -0.8760580505981934m, 0.0m, 0.8760580505981934m), 37200899080192L, false);
             TestUtils.AreEqual(atan(fp4(1000000.0m, 1000000.0m, 1000000.0m, 1000000.0m)), fp4(1.570795326794897m, 1.570795326794897m, 1.570795326794897m, 1.570795326794897m), 37200899080192L, false);
         }
 
+        [Test]
         public static void atan2_fp()
         {
             TestUtils.AreEqual(atan2(3.1m, 2.4m), 0.91199029067742038m, 37200899080192L, false);
@@ -159,6 +180,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(atan2(0.0m, 0.0m), 0.0m, 37200899080192L, false);
         }
 
+        [Test]
         public static void atan2_fp2()
         {
             TestUtils.AreEqual(atan2(fp2(3.1m, 3.1m), fp2(2.4m, -2.4m)), fp2(0.91199029067742038m, 2.2296023629123729m), 37200899080192L, false);
@@ -166,18 +188,21 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(atan2(fp2(0.0m, 0.0m), fp2(0.0m, 0.0m)), fp2(0.0m, 0.0m), 37200899080192L, false);
         }
 
+        [Test]
         public static void atan2_fp3()
         {
             TestUtils.AreEqual(atan2(fp3(3.1m, 3.1m, -3.1m), fp3(2.4m, -2.4m, 2.4m)), fp3(0.91199029067742038m, 2.2296023629123729m, -0.91199029067742038m), 37200899080192L, false);
             TestUtils.AreEqual(atan2(fp3(-3.1m, 0.0m, 0.0m), fp3(-2.4m, 0.0m, 0.0m)), fp3(-2.2296023629123729m, 0.0m, 0.0m), 37200899080192L, false);
         }
 
+        [Test]
         public static void atan2_fp4()
         {
             TestUtils.AreEqual(atan2(fp4(3.1m, 3.1m, -3.1m, -3.1m), fp4(2.4m, -2.4m, 2.4m, -2.4m)), fp4(0.91199029067742038m, 2.2296023629123729m, -0.91199029067742038m, -2.2296023629123729m), 37200899080192L, false);
             TestUtils.AreEqual(atan2(fp4(0.0m, 0.0m, 0.0m, 0.0m), fp4(0.0m, 0.0m, 0.0m, 0.0m)), fp4(0.0m, 0.0m, 0.0m, 0.0m), 37200899080192L, false);
         }
 
+        [Test]
         public static void log_fp()
         {
             TestUtils.AreEqual(log(0.0000000012m), -20.5409442801525m, 37200899080192L, false);
@@ -185,22 +210,26 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(log(1200000000m), 20.9055873937404m, 37200899080192L, false);
         }
 
+        [Test]
         public static void log_fp2()
         {
             TestUtils.AreEqual(log(fp2(0.0000000012m, 1.0m)), fp2(-20.5409442801525m, 0m), 37200899080192L, false);
             TestUtils.AreEqual(log(fp2(1200000000m, 1200000000m)), fp2(20.9055873937404m, 20.9055873937404m), 37200899080192L, false);
         }
 
+        [Test]
         public static void log_fp3()
         {
             TestUtils.AreEqual(log(fp3(0.0000000012m, 1.0m, 1200000000m)), fp3(-20.5409442801525m, 0m, 20.9055873937404m), 37200899080192L, false);
         }
 
+        [Test]
         public static void log_fp4()
         {
             TestUtils.AreEqual(log(fp4(0.0000000012m, 1.0m, 1200000000m, 1200000000m)), fp4(-20.5409442801525m, 0m, 20.9055873937404m, 20.9055873937404m), 37200899080192L, false);
         }
 
+        [Test]
         public static void log2_fp()
         {
             TestUtils.AreEqual(log2(0.0000000012m), -29.6343184481525m, 37200899080192L, false);
@@ -208,22 +237,26 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(log2(1200000000m), 30.1603872598201m, 37200899080192L, false);
         }
 
+        [Test]
         public static void log2_fp2()
         {
             TestUtils.AreEqual(log2(fp2(0.0000000012m, 1.0m)), fp2(-29.6343184481525m, 0m), 37200899080192L, false);
             TestUtils.AreEqual(log2(fp2(1200000000m, 1200000000m)), fp2(30.1603872598201m, 30.1603872598201m), 37200899080192L, false);
         }
 
+        [Test]
         public static void log2_fp3()
         {
             TestUtils.AreEqual(log2(fp3(0.0000000012m, 1.0m, 1200000000m)), fp3(-29.6343184481525m, 0m, 30.1603872598201m), 37200899080192L, false);
         }
 
+        [Test]
         public static void log2_fp4()
         {
             TestUtils.AreEqual(log2(fp4(0.0000000012m, 1.0m, 1200000000m, 1200000000m)), fp4(-29.6343184481525m, 0m, 30.1603872598201m, 30.1603872598201m), 37200899080192L, false);
         }
 
+        [Test]
         public static void radians_fp()
         {
             TestUtils.AreEqual(radians(-123.45m), -2.15460896158699986m, 200000000, false);
@@ -231,22 +264,26 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(radians(123.45m), 2.15460896158699986m, 200000000, false);
         }
 
+        [Test]
         public static void radians_fp2()
         {
             TestUtils.AreEqual(radians(fp2(-123.45m, 0.0m)), fp2(-2.15460896158699986m, 0.0m), 200000000, false);
             TestUtils.AreEqual(radians(fp2(123.45m, 123.45m)), fp2(2.15460896158699986m, 2.15460896158699986m), 200000000, false);
         }
 
+        [Test]
         public static void radians_fp3()
         {
             TestUtils.AreEqual(radians(fp3(-123.45m, 0.0m, 123.45m)), fp3(-2.15460896158699986m, 0.0m, 2.15460896158699986m), 200000000, false);
         }
 
+        [Test]
         public static void radians_fp4()
         {
             TestUtils.AreEqual(radians(fp4(-123.45m, 0.0m, 123.45m, 123.45m)), fp4(-2.15460896158699986m, 0.0m, 2.15460896158699986m, 2.15460896158699986m), 200000000, false);
         }
 
+        [Test]
         public static void degrees_fp()
         {
             TestUtils.AreEqual(degrees(-123.45m), -7073.1639808900125122m, 32000, false);
@@ -254,22 +291,26 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(degrees(123.45m), 7073.1639808900125122m, 32000, false);
         }
 
+        [Test]
         public static void degrees_fp2()
         {
             TestUtils.AreEqual(degrees(fp2(-123.45m, 0.0m)), fp2(-7073.1639808900125122m, 0.0m), 32000, false);
             TestUtils.AreEqual(degrees(fp2(123.45m, 123.45m)), fp2(7073.1639808900125122m, 7073.1639808900125122m), 32000, false);
         }
 
+        [Test]
         public static void degrees_fp3()
         {
             TestUtils.AreEqual(degrees(fp3(-123.45m, 0.0m, 123.45m)), fp3(-7073.1639808900125122m, 0.0m, 7073.1639808900125122m), 32000, false);
         }
 
+        [Test]
         public static void degrees_fp4()
         {
             TestUtils.AreEqual(degrees(fp4(-123.45m, 0.0m, 123.45m, 123.45m)), fp4(-7073.1639808900125122m, 0.0m, 7073.1639808900125122m, 7073.1639808900125122m), 32000, false);
         }
 
+        [Test]
         public static void sign_fp()
         {
             TestUtils.AreEqual(sign(-123.45m), -1.0m);
@@ -279,6 +320,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(sign(123.45m), 1.0m);
         }
 
+        [Test]
         public static void sign_fp2()
         {
             TestUtils.AreEqual(sign(fp2(-123.45m, -0.000000001m)), fp2(-1.0m, -1.0m));
@@ -286,18 +328,21 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(sign(fp2(123.45m, 123.45m)), fp2(1.0m, 1.0m));
         }
 
+        [Test]
         public static void sign_fp3()
         {
             TestUtils.AreEqual(sign(fp3(-123.45m, -0.000000001m, 0.0m)), fp3(-1.0m, -1.0m, 0.0m));
             TestUtils.AreEqual(sign(fp3(0.000000001m, 123.45m, 123.45m)), fp3(1.0m, 1.0m, 1.0m));
         }
 
+        [Test]
         public static void sign_fp4()
         {
             TestUtils.AreEqual(sign(fp4(-123.45m, -0.000000001m, 0.0m, 0.000000001m)), fp4(-1.0m, -1.0m, 0.0m, 1.0m));
             TestUtils.AreEqual(sign(fp4(123.45m, 123.45m, 123.45m, 123.45m)), fp4(1.0m, 1.0m, 1.0m, 1.0m));
         }
 
+        [Test]
         public static void sqrt_fp()
         {
             TestUtils.AreEqual(sqrt(0.0m), 0.0m, 200000000, false);
@@ -305,64 +350,76 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(sqrt(123.45m), 11.11080555135405m, 200000000, false);
         }
 
+        [Test]
         public static void sqrt_fp2()
         {
             TestUtils.AreEqual(sqrt(fp2(0.0m, 0.001m)), fp2(0.0m, 0.0316227766016838m), 200000000, false);
             TestUtils.AreEqual(sqrt(fp2(123.45m, 123.45m)), fp2(11.11080555135405m, 11.11080555135405m), 200000000, false);
         }
 
+        [Test]
         public static void sqrt_fp3()
         {
             TestUtils.AreEqual(sqrt(fp3(0.0m, 0.001m, 123.45m)), fp3(0.0m, 0.0316227766016838m, 11.11080555135405m), 200000000, false);
         }
 
+        [Test]
         public static void sqrt_fp4()
         {
             TestUtils.AreEqual(sqrt(fp4(0.0m, 0.001m, 123.45m, 123.45m)), fp4(0.0m, 0.0316227766016838m, 11.11080555135405m, 11.11080555135405m), 200000000, false);
         }
 
+        [Test]
         public static void rsqrt_fp()
         {
             TestUtils.AreEqual(rsqrt(1000000000m), 0.0000316227766016838m, 35359738368L, false);
             TestUtils.AreEqual(rsqrt(123.45m), 0.0900024751020984295m, 35359738368L, false);
         }
 
+        [Test]
         public static void rsqrt_fp2()
         {
             TestUtils.AreEqual(rsqrt(fp2(1000000000m, 123.45m)), fp2(0.0000316227766016838m, 0.0900024751020984295m), 35359738368L, false);
         }
 
+        [Test]
         public static void rsqrt_fp3()
         {
             TestUtils.AreEqual(rsqrt(fp3(1000000000m, 123.45m, 123.45m)), fp3(0.0000316227766016838m, 0.0900024751020984295m, 0.0900024751020984295m), 35359738368L, false);
         }
 
+        [Test]
         public static void rsqrt_fp4()
         {
             TestUtils.AreEqual(rsqrt(fp4(1000000000m, 123.45m, 123.45m, 123.45m)), fp4(0.0000316227766016838m, 0.0900024751020984295m, 0.0900024751020984295m, 0.0900024751020984295m), 35359738368L, false);
         }
 
+        [Test]
         public static void rcp_fp()
         {
             TestUtils.AreEqual(rcp(-123.45m), -0.0081004455245038477m, 200000000, false);
             TestUtils.AreEqual(rcp(123.45m), 0.0081004455245038477m, 200000000, false);
         }
 
+        [Test]
         public static void rcp_fp2()
         {
             TestUtils.AreEqual(rcp(fp2(-123.45m, 123.45m)), fp2(-0.0081004455245038477m, 0.0081004455245038477m), 200000000, false);
         }
 
+        [Test]
         public static void rcp_fp3()
         {
             TestUtils.AreEqual(rcp(fp3(-123.45m, 123.45m, 123.45m)), fp3(-0.0081004455245038477m, 0.0081004455245038477m, 0.0081004455245038477m), 200000000, false);
         }
 
+        [Test]
         public static void rcp_fp4()
         {
             TestUtils.AreEqual(rcp(fp4(-123.45m, 123.45m, 123.45m, 123.45m)), fp4(-0.0081004455245038477m, 0.0081004455245038477m, 0.0081004455245038477m, 0.0081004455245038477m), 200000000, false);
         }
 
+        [Test]
         public static void floor_fp()
         {
             TestUtils.AreEqual(floor(-100.51m), -101.0m);
@@ -374,6 +431,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(floor(100.51m), 100.0m);
         }
 
+        [Test]
         public static void floor_fp2()
         {
             TestUtils.AreEqual(floor(fp2(-100.51m, -100.5m)), fp2(-101.0m, -101.0m));
@@ -382,6 +440,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(floor(fp2(100.51m, 100.51m)), fp2(100.0m, 100.0m));
         }
 
+        [Test]
         public static void floor_fp3()
         {
             TestUtils.AreEqual(floor(fp3(-100.51m, -100.5m, -100.49m)), fp3(-101.0m, -101.0m, -101.0m));
@@ -389,12 +448,14 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(floor(fp3(100.51m, 100.51m, 100.51m)), fp3(100.0m, 100.0m, 100.0m));
         }
 
+        [Test]
         public static void floor_fp4()
         {
             TestUtils.AreEqual(floor(fp4(-100.51m, -100.5m, -100.49m, 0.0m)), fp4(-101.0m, -101.0m, -101.0m, 0.0m));
             TestUtils.AreEqual(floor(fp4(100.49m, 100.50m, 100.51m, 100.51m)), fp4(100.0m, 100.0m, 100.0m, 100.0m));
         }
 
+        [Test]
         public static void ceil_fp()
         {
             TestUtils.AreEqual(ceil(-100.51m), -100.0m);
@@ -406,6 +467,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(ceil(100.51m), 101.0m);
         }
 
+        [Test]
         public static void ceil_fp2()
         {
             TestUtils.AreEqual(ceil(fp2(-100.51m, -100.5m)), fp2(-100.0m, -100.0m));
@@ -414,6 +476,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(ceil(fp2(100.51m, 100.51m)), fp2(101.0m, 101.0m));
         }
 
+        [Test]
         public static void ceil_fp3()
         {
             TestUtils.AreEqual(ceil(fp3(-100.51m, -100.5m, -100.49m)), fp3(-100.0m, -100.0m, -100.0m));
@@ -421,12 +484,14 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(ceil(fp3(100.51m, 100.51m, 100.51m)), fp3(101.0m, 101.0m, 101.0m));
         }
 
+        [Test]
         public static void ceil_fp4()
         {
             TestUtils.AreEqual(ceil(fp4(-100.51m, -100.5m, -100.49m, 0.0m)), fp4(-100.0m, -100.0m, -100.0m, 0.0m));
             TestUtils.AreEqual(ceil(fp4(100.49m, 100.50m, 100.51m, 100.51m)), fp4(101.0m, 101.0m, 101.0m, 101.0m));
         }
 
+        [Test]
         public static void round_fp()
         {
             TestUtils.AreEqual(round(-100.51m), -101.0m);
@@ -439,6 +504,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(round(101.50m), 102.0m);
         }
 
+        [Test]
         public static void round_fp2()
         {
             TestUtils.AreEqual(round(fp2(-100.51m, -100.5m)), fp2(-101.0m, -100.0m));
@@ -447,6 +513,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(round(fp2(100.51m, 101.50m)), fp2(101.0m, 102.0m));
         }
 
+        [Test]
         public static void round_fp3()
         {
             TestUtils.AreEqual(round(fp3(-100.51m, -100.5m, -100.49m)), fp3(-101.0m, -100.0m, -100.0m));
@@ -454,12 +521,14 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(round(fp3(100.51m, 101.50m, 101.50m)), fp3(101.0m, 102.0m, 102.0m));
         }
 
+        [Test]
         public static void round_fp4()
         {
             TestUtils.AreEqual(round(fp4(-100.51m, -100.5m, -100.49m, 0.0m)), fp4(-101.0m, -100.0m, -100.0m, 0.0m));
             TestUtils.AreEqual(round(fp4(100.49m, 100.50m, 100.51m, 101.50m)), fp4(100.0m, 100.0m, 101.0m, 102.0m));
         }
 
+        [Test]
         public static void trunc_fp()
         {
             TestUtils.AreEqual(trunc(-100.51m), -100.0m);
@@ -472,6 +541,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(trunc(101.50m), 101.0m);
         }
 
+        [Test]
         public static void trunc_fp2()
         {
             TestUtils.AreEqual(trunc(fp2(-100.51m, -100.5m)), fp2(-100.0m, -100.0m));
@@ -480,6 +550,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(trunc(fp2(100.51m, 101.50m)), fp2(100.0m, 101.0m));
         }
 
+        [Test]
         public static void trunc_fp3()
         {
             TestUtils.AreEqual(trunc(fp3(-100.51m, -100.5m, -100.49m)), fp3(-100.0m, -100.0m, -100.0m));
@@ -487,12 +558,14 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(trunc(fp3(100.51m, 101.50m, 101.50m)), fp3(100.0m, 101.0m, 101.0m));
         }
 
+        [Test]
         public static void trunc_fp4()
         {
             TestUtils.AreEqual(trunc(fp4(-100.51m, -100.5m, -100.49m, 0.0m)), fp4(-100.0m, -100.0m, -100.0m, 0.0m));
             TestUtils.AreEqual(trunc(fp4(100.49m, 100.50m, 100.51m, 101.50m)), fp4(100.0m, 100.0m, 100.0m, 101.0m));
         }
 
+        [Test]
         public static void frac_fp()
         {
             TestUtils.AreEqual(frac(-1000000000m), 0.0m, 200000000, false);
@@ -501,23 +574,27 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(frac(100.8m), 0.8m, 200000000, false);
         }
 
+        [Test]
         public static void frac_fp2()
         {
             TestUtils.AreEqual(frac(fp2(-1000000000m, -100.3m)), fp2(0.0m, 0.7m), 200000000, false);
             TestUtils.AreEqual(frac(fp2(0.0m, 100.8m)), fp2(0.0m, 0.8m), 200000000, false);
         }
 
+        [Test]
         public static void frac_fp3()
         {
             TestUtils.AreEqual(frac(fp3(-1000000000m, -100.3m, 0.0m)), fp3(0.0m, 0.7m, 0.0m), 200000000, false);
             TestUtils.AreEqual(frac(fp3(100.8m, 100.8m, 100.8m)), fp3(0.8m, 0.8m, 0.8m), 200000000, false);
         }
 
+        [Test]
         public static void frac_fp4()
         {
             TestUtils.AreEqual(frac(fp4(-1000000000m, -100.3m, 0.0m, 100.8m)), fp4(0.0m, 0.7m, 0.0m, 0.8m), 200000000, false);
         }
 
+        [Test]
         public static void lerp_fp()
         {
             TestUtils.AreEqual(lerp(-123.45m, 439.43m, -1.5m), -967.77m, 1024, false);
@@ -525,22 +602,26 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(lerp(-123.45m, 439.43m, 5.5m), 2972.39m, 1024, false);
         }
 
+        [Test]
         public static void lerp_fp2()
         {
             TestUtils.AreEqual(lerp(fp2(-123.45m, -123.45m), fp2(439.43m, 439.43m), fp2(-1.5m, 0.5m)), fp2(-967.77m, 157.99m), 1024, false);
             TestUtils.AreEqual(lerp(fp2(-123.45m, -123.45m), fp2(439.43m, 439.43m), fp2(5.5m, 5.5m)), fp2(2972.39m, 2972.39m), 1024, false);
         }
 
+        [Test]
         public static void lerp_fp3()
         {
             TestUtils.AreEqual(lerp(fp3(-123.45m, -123.45m, -123.45m), fp3(439.43m, 439.43m, 439.43m), fp3(-1.5m, 0.5m, 5.5m)), fp3(-967.77m, 157.99m, 2972.39m), 1024, false);
         }
 
+        [Test]
         public static void lerp_fp4()
         {
             TestUtils.AreEqual(lerp(fp4(-123.45m, -123.45m, -123.45m, -123.45m), fp4(439.43m, 439.43m, 439.43m, 439.43m), fp4(-1.5m, 0.5m, 5.5m, 5.5m)), fp4(-967.77m, 157.99m, 2972.39m, 2972.39m), 1024, false);
         }
 
+        [Test]
         public static void unlerp_fp()
         {
             TestUtils.AreEqual(unlerp(-123.45m, 439.43m, -254.3m), -0.23246517907902217m, 200000000, false);
@@ -551,6 +632,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(unlerp(439.43m, -123.45m, 632.1m), -0.34229320636725412m, 200000000, false);
         }
 
+        [Test]
         public static void unlerp_fp2()
         {
             TestUtils.AreEqual(unlerp(fp2(-123.45m, -123.45m), fp2(439.43m, 439.43m), fp2(-254.3m, 0.0m)), fp2(-0.23246517907902217m, 0.21931850483229107m), 200000000, false);
@@ -558,18 +640,21 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(unlerp(fp2(439.43m, 439.43m), fp2(-123.45m, -123.45m), fp2(0.0m, 632.1m)), fp2(0.78068149516770893m, -0.34229320636725412m), 200000000, false);
         }
 
+        [Test]
         public static void unlerp_fp3()
         {
             TestUtils.AreEqual(unlerp(fp3(-123.45m, -123.45m, -123.45m), fp3(439.43m, 439.43m, 439.43m), fp3(-254.3m, 0.0m, 632.1m)), fp3(-0.23246517907902217m, 0.21931850483229107m, 1.3422932063672541m), 200000000, false);
             TestUtils.AreEqual(unlerp(fp3(439.43m, 439.43m, 439.43m), fp3(-123.45m, -123.45m, -123.45m), fp3(-254.3m, 0.0m, 632.1m)), fp3(1.2324651790790221m, 0.78068149516770893m, -0.34229320636725412m), 200000000, false);
         }
 
+        [Test]
         public static void unlerp_fp4()
         {
             TestUtils.AreEqual(unlerp(fp4(-123.45m, -123.45m, -123.45m, 439.43m), fp4(439.43m, 439.43m, 439.43m, -123.45m), fp4(-254.3m, 0.0m, 632.1m, -254.3m)), fp4(-0.23246517907902217m, 0.21931850483229107m, 1.3422932063672541m, 1.2324651790790221m), 200000000, false);
             TestUtils.AreEqual(unlerp(fp4(439.43m, 439.43m, 439.43m, 439.43m), fp4(-123.45m, -123.45m, -123.45m, -123.45m), fp4(0.0m, 632.1m, 632.1m, 632.1m)), fp4(0.78068149516770893m, -0.34229320636725412m, -0.34229320636725412m, -0.34229320636725412m), 200000000, false);
         }
 
+        [Test]
         public static void remap_fp()
         {
             TestUtils.AreEqual(remap(-123.45m, 439.43m, 541.3m, 631.5m, -200.0m), 529.03306921546333m, 128000, false);
@@ -583,6 +668,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(remap(-123.45m, 439.43m, 631.5m, 541.3m, 500.0m), 531.59382106310404m, 128000, false);
         }
 
+        [Test]
         public static void remap_fp2()
         {
             TestUtils.AreEqual(remap(fp2(-123.45m, -123.45m), fp2(439.43m, 439.43m), fp2(541.3m, 541.3m), fp2(631.5m, 631.5m), fp2(-200.0m, -100.0m)), fp2(529.03306921546333m, 545.05779917566799m), 128000, false);
@@ -592,6 +678,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(remap(fp2(-123.45m, -123.45m), fp2(439.43m, 439.43m), fp2(631.5m, 631.5m), fp2(541.3m, 541.3m), fp2(500.0m, 500.0m)), fp2(531.59382106310404m, 531.59382106310404m), 128000, false);
         }
 
+        [Test]
         public static void remap_fp3()
         {
             TestUtils.AreEqual(remap(fp3(-123.45m, -123.45m, -123.45m), fp3(439.43m, 439.43m, 439.43m), fp3(541.3m, 541.3m, 541.3m), fp3(631.5m, 631.5m, 631.5m), fp3(-200.0m, -100.0m, 500.0m)), fp3(529.03306921546333m, 545.05779917566799m, 641.20617893689596m), 128000, false);
@@ -599,6 +686,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(remap(fp3(-123.45m, -123.45m, -123.45m), fp3(439.43m, 439.43m, 439.43m), fp3(631.5m, 631.5m, 631.5m), fp3(541.3m, 541.3m, 541.3m), fp3(-200.0m, -100.0m, 500.0m)), fp3(643.76693078453667m, 627.74220082433201m, 531.59382106310404m), 128000, false);
         }
 
+        [Test]
         public static void remap_fp4()
         {
             TestUtils.AreEqual(remap(fp4(-123.45m, -123.45m, -123.45m, 439.43m), fp4(439.43m, 439.43m, 439.43m, -123.45m), fp4(541.3m, 541.3m, 541.3m, 541.3m), fp4(631.5m, 631.5m, 631.5m, 631.5m), fp4(-200.0m, -100.0m, 500.0m, -200.0m)), fp4(529.03306921546333m, 545.05779917566799m, 641.20617893689596m, 643.76693078453667m), 128000, false);
@@ -606,6 +694,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(remap(fp4(-123.45m, -123.45m, -123.45m, -123.45m), fp4(439.43m, 439.43m, 439.43m, 439.43m), fp4(631.5m, 631.5m, 631.5m, 631.5m), fp4(541.3m, 541.3m, 541.3m, 541.3m), fp4(500.0m, 500.0m, 500.0m, 500.0m)), fp4(531.59382106310404m, 531.59382106310404m, 531.59382106310404m, 531.59382106310404m), 128000, false);
         }
 
+        [Test]
         public static void clamp_fp()
         {
             TestUtils.AreEqual(clamp(-254.3m, -123.45m, 439.43m), -123.45m);
@@ -616,6 +705,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(clamp(632.1m, 439.43m, -123.45m), 439.43m);
         }
 
+        [Test]
         public static void clamp_fp2()
         {
             TestUtils.AreEqual(clamp(fp2(-254.3m, 246.3m), fp2(-123.45m, -123.45m), fp2(439.43m, 439.43m)), fp2(-123.45m, 246.3m));
@@ -623,18 +713,21 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(clamp(fp2(246.3m, 632.1m), fp2(439.43m, 439.43m), fp2(-123.45m, -123.45m)), fp2(439.43m, 439.43m));
         }
 
+        [Test]
         public static void clamp_fp3()
         {
             TestUtils.AreEqual(clamp(fp3(-254.3m, 246.3m, 632.1m), fp3(-123.45m, -123.45m, -123.45m), fp3(439.43m, 439.43m, 439.43m)), fp3(-123.45m, 246.3m, 439.43m));
             TestUtils.AreEqual(clamp(fp3(-254.3m, 246.3m, 632.1m), fp3(439.43m, 439.43m, 439.43m), fp3(-123.45m, -123.45m, -123.45m)), fp3(439.43m, 439.43m, 439.43m));
         }
 
+        [Test]
         public static void clamp_fp4()
         {
             TestUtils.AreEqual(clamp(fp4(-254.3m, 246.3m, 632.1m, -254.3m), fp4(-123.45m, -123.45m, -123.45m, 439.43m), fp4(439.43m, 439.43m, 439.43m, -123.45m)), fp4(-123.45m, 246.3m, 439.43m, 439.43m));
             TestUtils.AreEqual(clamp(fp4(246.3m, 632.1m, 632.1m, 632.1m), fp4(439.43m, 439.43m, 439.43m, 439.43m), fp4(-123.45m, -123.45m, -123.45m, -123.45m)), fp4(439.43m, 439.43m, 439.43m, 439.43m));
         }
 
+        [Test]
         public static void saturate_fp()
         {
             TestUtils.AreEqual(saturate(-123.45m), 0.0m);
@@ -643,23 +736,27 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(saturate(1.0m), 1.0m);
         }
 
+        [Test]
         public static void saturate_fp2()
         {
             TestUtils.AreEqual(saturate(fp2(-123.45m, 0.0m)), fp2(0.0m, 0.0m));
             TestUtils.AreEqual(saturate(fp2(0.5m, 1.0m)), fp2(0.5m, 1.0m));
         }
 
+        [Test]
         public static void saturate_fp3()
         {
             TestUtils.AreEqual(saturate(fp3(-123.45m, 0.0m, 0.5m)), fp3(0.0m, 0.0m, 0.5m));
             TestUtils.AreEqual(saturate(fp3(1.0m, 1.0m, 1.0m)), fp3(1.0m, 1.0m, 1.0m));
         }
 
+        [Test]
         public static void saturate_fp4()
         {
             TestUtils.AreEqual(saturate(fp4(-123.45m, 0.0m, 0.5m, 1.0m)), fp4(0.0m, 0.0m, 0.5m, 1.0m));
         }
 
+        [Test]
         public static void step_fp()
         {
             TestUtils.AreEqual(step(-123.45m, -200.0m), 0.0m);
@@ -668,23 +765,27 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(step(123.45m, 200.0m), 1.0m);
         }
 
+        [Test]
         public static void step_fp2()
         {
             TestUtils.AreEqual(step(fp2(-123.45m, -123.45m), fp2(-200.0m, 200.0m)), fp2(0.0m, 1.0m));
             TestUtils.AreEqual(step(fp2(123.45m, 123.45m), fp2(-200.0m, 200.0m)), fp2(0.0m, 1.0m));
         }
 
+        [Test]
         public static void step_fp3()
         {
             TestUtils.AreEqual(step(fp3(-123.45m, -123.45m, 123.45m), fp3(-200.0m, 200.0m, -200.0m)), fp3(0.0m, 1.0m, 0.0m));
             TestUtils.AreEqual(step(fp3(123.45m, 123.45m, 123.45m), fp3(200.0m, 200.0m, 200.0m)), fp3(1.0m, 1.0m, 1.0m));
         }
 
+        [Test]
         public static void step_fp4()
         {
             TestUtils.AreEqual(step(fp4(-123.45m, -123.45m, 123.45m, 123.45m), fp4(-200.0m, 200.0m, -200.0m, 200.0m)), fp4(0.0m, 1.0m, 0.0m, 1.0m));
         }
 
+        [Test]
         public static void min_fp()
         {
             TestUtils.AreEqual(min(-1234.56m, -3456.7m), -3456.7m);
@@ -695,6 +796,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(min(3456.7m, 1234.56m), 1234.56m);
         }
 
+        [Test]
         public static void min_fp2()
         {
             TestUtils.AreEqual(min(fp2(-1234.56m, -3456.7m), fp2(-3456.7m, -1234.56m)), fp2(-3456.7m, -3456.7m));
@@ -702,18 +804,21 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(min(fp2(1234.56m, 3456.7m), fp2(3456.7m, 1234.56m)), fp2(1234.56m, 1234.56m));
         }
 
+        [Test]
         public static void min_fp3()
         {
             TestUtils.AreEqual(min(fp3(-1234.56m, -3456.7m, -1234.56m), fp3(-3456.7m, -1234.56m, 3456.7m)), fp3(-3456.7m, -3456.7m, -1234.56m));
             TestUtils.AreEqual(min(fp3(3456.7m, 1234.56m, 3456.7m), fp3(-1234.56m, 3456.7m, 1234.56m)), fp3(-1234.56m, 1234.56m, 1234.56m));
         }
 
+        [Test]
         public static void min_fp4()
         {
             TestUtils.AreEqual(min(fp4(-1234.56m, -3456.7m, -1234.56m, 3456.7m), fp4(-3456.7m, -1234.56m, 3456.7m, -1234.56m)), fp4(-3456.7m, -3456.7m, -1234.56m, -1234.56m));
             TestUtils.AreEqual(min(fp4(1234.56m, 3456.7m, 3456.7m, 3456.7m), fp4(3456.7m, 1234.56m, 1234.56m, 1234.56m)), fp4(1234.56m, 1234.56m, 1234.56m, 1234.56m));
         }
 
+        [Test]
         public static void max_fp()
         {
             TestUtils.AreEqual(max(-1234.56m, -3456.7m), -1234.56m);
@@ -724,6 +829,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(max(3456.7m, 1234.56m), 3456.7m);
         }
 
+        [Test]
         public static void max_fp2()
         {
             TestUtils.AreEqual(max(fp2(-1234.56m, -3456.7m), fp2(-3456.7m, -1234.56m)), fp2(-1234.56m, -1234.56m));
@@ -731,18 +837,21 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(max(fp2(1234.56m, 3456.7m), fp2(3456.7m, 1234.56m)), fp2(3456.7m, 3456.7m));
         }
 
+        [Test]
         public static void max_fp3()
         {
             TestUtils.AreEqual(max(fp3(-1234.56m, -3456.7m, -1234.56m), fp3(-3456.7m, -1234.56m, 3456.7m)), fp3(-1234.56m, -1234.56m, 3456.7m));
             TestUtils.AreEqual(max(fp3(3456.7m, 1234.56m, 3456.7m), fp3(-1234.56m, 3456.7m, 1234.56m)), fp3(3456.7m, 3456.7m, 3456.7m));
         }
 
+        [Test]
         public static void max_fp4()
         {
             TestUtils.AreEqual(max(fp4(-1234.56m, -3456.7m, -1234.56m, 3456.7m), fp4(-3456.7m, -1234.56m, 3456.7m, -1234.56m)), fp4(-1234.56m, -1234.56m, 3456.7m, 3456.7m));
             TestUtils.AreEqual(max(fp4(1234.56m, 3456.7m, 3456.7m, 3456.7m), fp4(3456.7m, 1234.56m, 1234.56m, 1234.56m)), fp4(3456.7m, 3456.7m, 3456.7m, 3456.7m));
         }
 
+        [Test]
         public static void smoothstep_fp()
         {
             TestUtils.AreEqual(smoothstep(-123.45m, 345.6m, -200.0m), 0.0m, 35359738368L, false);
@@ -753,6 +862,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(smoothstep(345.6m, -123.45m, 400.0m), 0.0m, 35359738368L, false);
         }
 
+        [Test]
         public static void smoothstep_fp2()
         {
             TestUtils.AreEqual(smoothstep(fp2(-123.45m, -123.45m), fp2(345.6m, 345.6m), fp2(-200.0m, -100.0m)), fp2(0.0m, 0.0072484810488798993m), 35359738368L, false);
@@ -760,38 +870,45 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(smoothstep(fp2(345.6m, 345.6m), fp2(-123.45m, -123.45m), fp2(-100.0m, 400.0m)), fp2(0.9927515189511201007m, 0.0m), 35359738368L, false);
         }
 
+        [Test]
         public static void smoothstep_fp3()
         {
             TestUtils.AreEqual(smoothstep(fp3(-123.45m, -123.45m, -123.45m), fp3(345.6m, 345.6m, 345.6m), fp3(-200.0m, -100.0m, 400.0m)), fp3(0.0m, 0.0072484810488798993m, 1.0m), 35359738368L, false);
             TestUtils.AreEqual(smoothstep(fp3(345.6m, 345.6m, 345.6m), fp3(-123.45m, -123.45m, -123.45m), fp3(-200.0m, -100.0m, 400.0m)), fp3(1.0m, 0.9927515189511201007m, 0.0m), 35359738368L, false);
         }
 
+        [Test]
         public static void smoothstep_fp4()
         {
             TestUtils.AreEqual(smoothstep(fp4(-123.45m, -123.45m, -123.45m, 345.6m), fp4(345.6m, 345.6m, 345.6m, -123.45m), fp4(-200.0m, -100.0m, 400.0m, -200.0m)), fp4(0.0m, 0.0072484810488798993m, 1.0m, 1.0m), 35359738368L, false);
             TestUtils.AreEqual(smoothstep(fp4(345.6m, 345.6m, 345.6m, 345.6m), fp4(-123.45m, -123.45m, -123.45m, -123.45m), fp4(-100.0m, 400.0m, 400.0m, 400.0m)), fp4(0.9927515189511201007m, 0.0m, 0.0m, 0.0m), 35359738368L, false);
         }
 
+        [Test]
         public static void mad_fp()
         {
             TestUtils.AreEqual(mad(-123.45m, 345.6m, 4.321m), -42659.999m, 32000, false);
         }
 
+        [Test]
         public static void mad_fp2()
         {
             TestUtils.AreEqual(mad(fp2(-123.45m, -123.45m), fp2(345.6m, 345.6m), fp2(4.321m, 4.321m)), fp2(-42659.999m, -42659.999m), 32000, false);
         }
 
+        [Test]
         public static void mad_fp3()
         {
             TestUtils.AreEqual(mad(fp3(-123.45m, -123.45m, -123.45m), fp3(345.6m, 345.6m, 345.6m), fp3(4.321m, 4.321m, 4.321m)), fp3(-42659.999m, -42659.999m, -42659.999m), 32000, false);
         }
 
+        [Test]
         public static void mad_fp4()
         {
             TestUtils.AreEqual(mad(fp4(-123.45m, -123.45m, -123.45m, -123.45m), fp4(345.6m, 345.6m, 345.6m, 345.6m), fp4(4.321m, 4.321m, 4.321m, 4.321m)), fp4(-42659.999m, -42659.999m, -42659.999m, -42659.999m), 32000, false);
         }
 
+        [Test]
         public static void fmod_fp()
         {
             TestUtils.AreEqual(fmod(-323.4m, -123.6m), -76.2m, 32000, false);
@@ -804,6 +921,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(fmod(323.4m, 123.6m), 76.2m, 32000, false);
         }
 
+        [Test]
         public static void fmod_fp2()
         {
             TestUtils.AreEqual(fmod(fp2(-323.4m, 0.0m), fp2(-123.6m, -123.6m)), fp2(-76.2m, 0.0m), 32000, false);
@@ -812,6 +930,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(fmod(fp2(0.0m, 323.4m), fp2(123.6m, 123.6m)), fp2(0.0m, 76.2m), 32000, false);
         }
 
+        [Test]
         public static void fmod_fp3()
         {
             TestUtils.AreEqual(fmod(fp3(-323.4m, 0.0m, 0.0m), fp3(-123.6m, -123.6m, -123.6m)), fp3(-76.2m, 0.0m, 0.0m), 32000, false);
@@ -819,12 +938,14 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(fmod(fp3(0.0m, 323.4m, 323.4m), fp3(123.6m, 123.6m, 123.6m)), fp3(0.0m, 76.2m, 76.2m), 32000, false);
         }
 
+        [Test]
         public static void fmod_fp4()
         {
             TestUtils.AreEqual(fmod(fp4(-323.4m, 0.0m, 0.0m, 323.4m), fp4(-123.6m, -123.6m, -123.6m, -123.6m)), fp4(-76.2m, 0.0m, 0.0m, 76.2m), 32000, false);
             TestUtils.AreEqual(fmod(fp4(-323.4m, 0.0m, 0.0m, 323.4m), fp4(123.6m, 123.6m, 123.6m, 123.6m)), fp4(-76.2m, 0.0m, 0.0m, 76.2m), 32000, false);
         }
 
+        [Test]
         public static void pow_fp()
         {
             TestUtils.AreEqual(pow(3.4m, -2.6m), 0.041510199028461224m, 200000000, false);
@@ -841,6 +962,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(pow(3.4m, 2.6m), 24.090465076169736m, 200000000, false);
         }
 
+        [Test]
         public static void pow_fp2()
         {
             TestUtils.AreEqual(pow(fp2(3.4m, -3.4m), fp2(-2.6m, 0.0m)), fp2(0.041510199028461224m, 1.0m), 200000000, false);
@@ -851,6 +973,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(pow(fp2(0.0m, 3.4m), fp2(2.6m, 2.6m)), fp2(0.0m, 24.090465076169736m), 200000000, false);
         }
 
+        [Test]
         public static void pow_fp3()
         {
             TestUtils.AreEqual(pow(fp3(3.4m, -3.4m, 0.0m), fp3(-2.6m, 0.0m, 0.0m)), fp3(0.041510199028461224m, 1.0m, 1.0m), 200000000, false);
@@ -859,6 +982,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(pow(fp3(0.0m, 0.0m, 3.4m), fp3(2.6m, 2.6m, 2.6m)), fp3(0.0m, 0.0m, 24.090465076169736m), 200000000, false);
         }
 
+        [Test]
         public static void pow_fp4()
         {
             TestUtils.AreEqual(pow(fp4(3.4m, -3.4m, 0.0m, 0.0m), fp4(-2.6m, 0.0m, 0.0m, 0.0m)), fp4(0.041510199028461224m, 1.0m, 1.0m, 1.0m), 200000000, false);

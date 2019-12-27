@@ -5,7 +5,6 @@ namespace Unity.Mathematics.FixedPoint.Tests
 {
     partial class TestUtils
     {
-
         public static void AreEqual(bool a, bool b)
         {
             Assert.AreEqual(a, b);

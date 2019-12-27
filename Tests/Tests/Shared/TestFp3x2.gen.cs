@@ -15,6 +15,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
     [TestFixture]
     public class TestFp3x2
     {
+        [Test]
         public static void fp3x2_zero()
         {
             TestUtils.AreEqual(fp3x2.zero.c0.x, (fp)0);
@@ -25,6 +26,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(fp3x2.zero.c1.z, (fp)0);
         }
 
+        [Test]
         public static void fp3x2_operator_equal_wide_wide()
         {
             fp3x2 a0 = fp3x2(-135.18924m, -49.0941162m, 169.129822m, 240.8053m, 314.7392m, 442.393m);
@@ -48,6 +50,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 == b3, r3);
         }
 
+        [Test]
         public static void fp3x2_operator_equal_wide_scalar()
         {
             fp3x2 a0 = fp3x2(65.6712m, 404.415527m, -269.730164m, 83.6306152m, 152.9945m, -155.868286m);
@@ -71,6 +74,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 == b3, r3);
         }
 
+        [Test]
         public static void fp3x2_operator_equal_scalar_wide()
         {
             fp a0 = (36.38391m);
@@ -94,6 +98,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 == b3, r3);
         }
 
+        [Test]
         public static void fp3x2_operator_not_equal_wide_wide()
         {
             fp3x2 a0 = fp3x2(279.994141m, -43.34201m, -465.724731m, 317.466553m, 85.7149658m, 360.8905m);
@@ -117,6 +122,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 != b3, r3);
         }
 
+        [Test]
         public static void fp3x2_operator_not_equal_wide_scalar()
         {
             fp3x2 a0 = fp3x2(-155.4411m, -19.4266052m, 174.633057m, 507.920715m, 59.177063m, 171.151489m);
@@ -140,6 +146,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
             TestUtils.AreEqual(a3 != b3, r3);
         }
 
+        [Test]
         public static void fp3x2_operator_not_equal_scalar_wide()
         {
             fp a0 = (478.353149m);
