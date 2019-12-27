@@ -1,0 +1,17 @@
+name: Test project
+on: [push]
+jobs:
+  testRunnerInAllModes:
+    name: Test all modes ✨
+    runs-on: ubuntu-latest
+    steps:
+      # Configure test runner
+      - name: Run tests
+        id: myTestStep
+        uses: webbertakken/unity-test-runner@v1.1
+        env:
+          # Choose: "all", "playmode", "editmode"
+          TEST_MODE: all
+          
+          # Optional: Path to your project, leave blank for "./"
+          PROJECT_PATH: ./
