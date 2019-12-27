@@ -2,7 +2,7 @@ namespace Unity.Mathematics.FixedPoint
 {
     partial struct fp 
     {
-        public static readonly long[] SinLut = new[] 
+        internal static readonly long[] SinLut = new[] 
         {
             0x0L, 0x8000L, 0x10000L, 0x18000L, 0x20000L, 0x28001L, 0x30001L, 0x38001L, 
             0x40001L, 0x48002L, 0x50002L, 0x58002L, 0x60002L, 0x68002L, 0x70003L, 0x78003L, 

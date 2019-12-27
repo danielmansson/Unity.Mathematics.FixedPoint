@@ -1,11 +1,11 @@
 {
-    "name": "com.unity.mathematics.fixedpoint",
+    "name": "com.danielmansson.mathematics.fixedpoint",
     "displayName": "Mathematics.FixedPoint",
     "version": "0.1.0",
     "unity": "2019.3",
     "description": "Fixed-point version of Unity's C# math library.",
     "keywords": [
-        "unity"
+        "fixedpoint", "math"
     ],
     "dependencies": {
         "com.unity.mathematics": "1.1.0"

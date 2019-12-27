@@ -13,21 +13,15 @@ namespace Unity.Mathematics.FixedPoint
 		readonly long m_rawValue;
 
 		// Precision of this type is 2^-32, that is 2,3283064365386962890625E-10
-		public static readonly decimal Precision = (decimal)(new fp(1L));//0.00000000023283064365386962890625m;
-		public static readonly fp MaxValue = new fp(MAX_VALUE);
-		public static readonly fp MinValue = new fp(MIN_VALUE);
+		public static readonly decimal precision = (decimal)(new fp(1L));//0.00000000023283064365386962890625m;
+		public static readonly fp max_value = new fp(MAX_VALUE);
+		public static readonly fp min_value = new fp(MIN_VALUE);
 		public static readonly fp one = new fp(ONE);
 		public static readonly fp zero = new fp();
 
-		/// <summary>
-		/// The value of Pi
-		/// </summary>
-		public static readonly fp Pi = new fp(PI);
-		public static readonly fp PiOver2 = new fp(PI_OVER_2);
-		public static readonly fp PiTimes2 = new fp(PI_TIMES_2);
-		public static readonly fp PiInv = (fp)0.3183098861837906715377675267M;
-		public static readonly fp PiOver2Inv = (fp)0.6366197723675813430755350535M;
-		static readonly fp Log2Max = new fp(LOG2MAX);
+        static readonly fp Pi = new fp(PI);
+        static readonly fp PiOver2 = new fp(PI_OVER_2);
+        static readonly fp Log2Max = new fp(LOG2MAX);
 		static readonly fp Log2Min = new fp(LOG2MIN);
 		static readonly fp Ln2 = new fp(LN2);
 
@@ -49,7 +43,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// Returns a number indicating the sign of a Fix64 number.
 		/// Returns 1 if the value is positive, 0 if is 0, and -1 if it is negative.
 		/// </summary>
-		public static int Sign(fp value)
+		internal static int Sign(fp value)
 		{
 			return
 				value.m_rawValue < 0 ? -1 :
@@ -62,11 +56,11 @@ namespace Unity.Mathematics.FixedPoint
 		/// Returns the absolute value of a Fix64 number.
 		/// Note: Abs(Fix64.MinValue) == Fix64.MaxValue.
 		/// </summary>
-		public static fp Abs(fp value)
+		internal static fp Abs(fp value)
 		{
 			if (value.m_rawValue == MIN_VALUE)
 			{
-				return MaxValue;
+				return max_value;
 			}
 
 			// branchless implementation, see http://www.strchr.com/optimized_abs_function
@@ -78,7 +72,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// Returns the absolute value of a Fix64 number.
 		/// FastAbs(Fix64.MinValue) is undefined.
 		/// </summary>
-		public static fp FastAbs(fp value)
+		internal static fp FastAbs(fp value)
 		{
 			// branchless implementation, see http://www.strchr.com/optimized_abs_function
 			var mask = value.m_rawValue >> 63;
@@ -89,7 +83,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// <summary>
 		/// Returns the largest integer less than or equal to the specified number.
 		/// </summary>
-		public static fp Floor(fp value)
+		internal static fp Floor(fp value)
 		{
 			// Just zero out the fractional part
 			return new fp((long)((ulong)value.m_rawValue & 0xFFFFFFFF00000000));
@@ -98,7 +92,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// <summary>
 		/// Returns the smallest integral value that is greater than or equal to the specified number.
 		/// </summary>
-		public static fp Ceiling(fp value)
+		internal static fp Ceiling(fp value)
 		{
 			var hasFractionalPart = (value.m_rawValue & 0x00000000FFFFFFFF) != 0;
 			return hasFractionalPart ? Floor(value) + one : value;
@@ -108,7 +102,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// Rounds a value to the nearest integral value.
 		/// If the value is halfway between an even and an uneven value, returns the even value.
 		/// </summary>
-		public static fp Round(fp value)
+		internal static fp Round(fp value)
 		{
 			var fractionalPart = value.m_rawValue & 0x00000000FFFFFFFF;
 			var integralPart = Floor(value);
@@ -130,7 +124,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// <summary>
 		/// Rounds a value to the nearest integral value towards zero.
 		/// </summary>
-		public static fp Truncate(fp value)
+		internal static fp Truncate(fp value)
 		{
 			var sign = Sign(value);
 			var fractionalPart = value.m_rawValue & 0x00000000FFFFFFFF;
@@ -166,16 +160,16 @@ namespace Unity.Mathematics.FixedPoint
 		/// <summary>
 		/// Adds x and y witout performing overflow checking. Should be inlined by the CLR.
 		/// </summary>
-		public static fp FastAdd(fp x, fp y)
+		internal static fp FastAdd(fp x, fp y)
 		{
 			return new fp(x.m_rawValue + y.m_rawValue);
 		}
 
-		/// <summary>
-		/// Subtracts y from x. Performs saturating substraction, i.e. in case of overflow, 
-		/// rounds to MinValue or MaxValue depending on sign of operands.
-		/// </summary>
-		public static fp operator -(fp x, fp y)
+        /// <summary>
+        /// Subtracts y from x. Performs saturating substraction, i.e. in case of overflow, 
+        /// rounds to MinValue or MaxValue depending on sign of operands.
+        /// </summary>
+        public static fp operator -(fp x, fp y)
 		{
 			var xl = x.m_rawValue;
 			var yl = y.m_rawValue;
@@ -191,7 +185,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// <summary>
 		/// Subtracts y from x witout performing overflow checking. Should be inlined by the CLR.
 		/// </summary>
-		public static fp FastSub(fp x, fp y)
+		internal static fp FastSub(fp x, fp y)
 		{
 			return new fp(x.m_rawValue - y.m_rawValue);
 		}
@@ -204,7 +198,7 @@ namespace Unity.Mathematics.FixedPoint
 			return sum;
 		}
 
-		public static fp operator *(fp x, fp y)
+        public static fp operator *(fp x, fp y)
 		{
 
 			var xl = x.m_rawValue;
@@ -239,14 +233,14 @@ namespace Unity.Mathematics.FixedPoint
 			{
 				if (sum < 0 || (overflow && xl > 0))
 				{
-					return MaxValue;
+					return max_value;
 				}
 			}
 			else
 			{
 				if (sum > 0)
 				{
-					return MinValue;
+					return min_value;
 				}
 			}
 
@@ -255,7 +249,7 @@ namespace Unity.Mathematics.FixedPoint
 			var topCarry = hihi >> FRACTIONAL_PLACES;
 			if (topCarry != 0 && topCarry != -1 /*&& xl != -17 && yl != -17*/)
 			{
-				return opSignsEqual ? MaxValue : MinValue;
+				return opSignsEqual ? max_value : min_value;
 			}
 
 			// If signs differ, both operands' magnitudes are greater than 1,
@@ -275,7 +269,7 @@ namespace Unity.Mathematics.FixedPoint
 				}
 				if (sum > negOp && negOp < -ONE && posOp > ONE)
 				{
-					return MinValue;
+					return min_value;
 				}
 			}
 
@@ -286,7 +280,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// Performs multiplication without checking for overflow.
 		/// Useful for performance-critical code where the values are guaranteed not to cause overflow
 		/// </summary>
-		public static fp FastMul(fp x, fp y)
+		internal static fp FastMul(fp x, fp y)
 		{
 
 			var xl = x.m_rawValue;
@@ -320,7 +314,7 @@ namespace Unity.Mathematics.FixedPoint
 			return result;
 		}
 
-		public static fp operator /(fp x, fp y)
+        public static fp operator /(fp x, fp y)
 		{
 			var xl = x.m_rawValue;
 			var yl = y.m_rawValue;
@@ -360,7 +354,7 @@ namespace Unity.Mathematics.FixedPoint
 				// Detect overflow
 				if ((div & ~(0xFFFFFFFFFFFFFFFF >> bitPos)) != 0)
 				{
-					return ((xl ^ yl) & MIN_VALUE) == 0 ? MaxValue : MinValue;
+					return ((xl ^ yl) & MIN_VALUE) == 0 ? max_value : min_value;
 				}
 
 				remainder <<= 1;
@@ -378,7 +372,7 @@ namespace Unity.Mathematics.FixedPoint
 			return new fp(result);
 		}
 
-		public static fp operator %(fp x, fp y)
+        public static fp operator %(fp x, fp y)
 		{
 			return new fp(
 				x.m_rawValue == MIN_VALUE & y.m_rawValue == -1 ?
@@ -390,22 +384,22 @@ namespace Unity.Mathematics.FixedPoint
 		/// Performs modulo as fast as possible; throws if x == MinValue and y == -1.
 		/// Use the operator (%) for a more reliable but slower modulo.
 		/// </summary>
-		public static fp FastMod(fp x, fp y)
+		internal static fp FastMod(fp x, fp y)
 		{
 			return new fp(x.m_rawValue % y.m_rawValue);
 		}
 
-		public static fp operator -(fp x)
+        public static fp operator -(fp x)
 		{
-			return x.m_rawValue == MIN_VALUE ? MaxValue : new fp(-x.m_rawValue);
+			return x.m_rawValue == MIN_VALUE ? max_value : new fp(-x.m_rawValue);
 		}
 
-		public static fp operator +(fp x)
+        public static fp operator +(fp x)
 		{
 			return x;
 		}
 
-		public static fp operator ++(fp x)
+        public static fp operator ++(fp x)
 		{
 			return x + one;
 		}
@@ -449,7 +443,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// Returns 2 raised to the specified power.
 		/// Provides at least 6 decimals of accuracy.
 		/// </summary>
-		public static fp Pow2(fp x)
+		internal static fp Pow2(fp x)
 		{
 			if (x.m_rawValue == 0)
 			{
@@ -469,11 +463,11 @@ namespace Unity.Mathematics.FixedPoint
 			}
 			if (x >= Log2Max)
 			{
-				return neg ? one / MaxValue : MaxValue;
+				return neg ? one / max_value : max_value;
 			}
 			if (x <= Log2Min)
 			{
-				return neg ? MaxValue : zero;
+				return neg ? max_value : zero;
 			}
 
 			/* The algorithm is based on the power series for exp(x):
@@ -513,7 +507,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// <exception cref="ArgumentOutOfRangeException">
 		/// The argument was non-positive
 		/// </exception>
-		public static fp Log2(fp x)
+		internal static fp Log2(fp x)
 		{
 			if (x.m_rawValue <= 0)
 			{
@@ -563,7 +557,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// <exception cref="ArgumentOutOfRangeException">
 		/// The argument was non-positive
 		/// </exception>
-		public static fp Ln(fp x)
+		internal static fp Ln(fp x)
 		{
 			return FastMul(Log2(x), Ln2);
 		}
@@ -578,7 +572,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// <exception cref="ArgumentOutOfRangeException">
 		/// The base was negative, with a non-zero exponent
 		/// </exception>
-		public static fp Pow(fp b, fp exp)
+		internal static fp Pow(fp b, fp exp)
 		{
 			if (b == one)
 			{
@@ -607,7 +601,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// <exception cref="ArgumentOutOfRangeException">
 		/// The argument was negative.
 		/// </exception>
-		public static fp Sqrt(fp x)
+		internal static fp Sqrt(fp x)
 		{
 			var xl = x.m_rawValue;
 			if (xl < 0)
@@ -683,7 +677,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// Returns the Sine of x.
 		/// The relative error is less than 1E-10 for x in [-2PI, 2PI], and less than 1E-7 in the worst case.
 		/// </summary>
-		public static fp Sin(fp x)
+		internal static fp Sin(fp x)
 		{
 			var clampedL = ClampSinValue(x.m_rawValue, out var flipHorizontal, out var flipVertical);
 			var clamped = new fp(clampedL);
@@ -712,7 +706,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// This is at least 3 times faster than Sin() on x86 and slightly faster than Math.Sin(),
 		/// however its accuracy is limited to 4-5 decimals, for small enough values of x.
 		/// </summary>
-		public static fp FastSin(fp x)
+		internal static fp FastSin(fp x)
 		{
 			var clampedL = ClampSinValue(x.m_rawValue, out bool flipHorizontal, out bool flipVertical);
 
@@ -773,7 +767,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// Returns the cosine of x.
 		/// The relative error is less than 1E-10 for x in [-2PI, 2PI], and less than 1E-7 in the worst case.
 		/// </summary>
-		public static fp Cos(fp x)
+		internal static fp Cos(fp x)
 		{
 			var xl = x.m_rawValue;
 			var rawAngle = xl + (xl > 0 ? -PI - PI_OVER_2 : PI_OVER_2);
@@ -784,7 +778,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// Returns a rough approximation of the cosine of x.
 		/// See FastSin for more details.
 		/// </summary>
-		public static fp FastCos(fp x)
+		internal static fp FastCos(fp x)
 		{
 			var xl = x.m_rawValue;
 			var rawAngle = xl + (xl > 0 ? -PI - PI_OVER_2 : PI_OVER_2);
@@ -797,7 +791,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// <remarks>
 		/// This function is not well-tested. It may be wildly inaccurate.
 		/// </remarks>
-		public static fp Tan(fp x)
+		internal static fp Tan(fp x)
 		{
 			var clampedPi = x.m_rawValue % PI;
 			var flip = false;
@@ -832,7 +826,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// Returns the arccos of of the specified number, calculated using Atan and Sqrt
 		/// This function has at least 7 decimals of accuracy.
 		/// </summary>
-		public static fp Acos(fp x)
+		internal static fp Acos(fp x)
 		{
 			if (x < -one || x > one)
 			{
@@ -852,7 +846,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// Returns the arctan of of the specified number, calculated using Euler series
 		/// This function has at least 7 decimals of accuracy.
 		/// </summary>
-		public static fp Atan(fp z)
+		internal static fp Atan(fp z)
 		{
 			if (z.m_rawValue == 0)
 			{
@@ -915,7 +909,7 @@ namespace Unity.Mathematics.FixedPoint
 			return result;
 		}
 
-		public static fp Atan2(fp y, fp x)
+		internal static fp Atan2(fp y, fp x)
 		{
 			var yl = y.m_rawValue;
 			var xl = x.m_rawValue;
@@ -935,7 +929,7 @@ namespace Unity.Mathematics.FixedPoint
 			var z = y / x;
 
 			// Deal with overflow
-			if (one + (fp)0.28M * z * z == MaxValue)
+			if (one + (fp)0.28M * z * z == max_value)
 			{
 				return y < zero ? -PiOver2 : PiOver2;
 			}
@@ -1088,11 +1082,11 @@ namespace Unity.Mathematics.FixedPoint
 						writer.Write("            ");
 					}
 					var tan = Math.Tan(angle);
-					if (tan > (double)MaxValue || tan < 0.0)
+					if (tan > (double)max_value || tan < 0.0)
 					{
-						tan = (double)MaxValue;
+						tan = (double)max_value;
 					}
-					var rawValue = (((decimal)tan > (decimal)MaxValue || tan < 0.0) ? MaxValue : (fp)tan).m_rawValue;
+					var rawValue = (((decimal)tan > (decimal)max_value || tan < 0.0) ? max_value : (fp)tan).m_rawValue;
 					writer.Write(string.Format("0x{0:X}L, ", rawValue));
 				}
 				writer.Write(
@@ -1119,7 +1113,7 @@ namespace Unity.Mathematics.FixedPoint
 		/// This is the constructor from raw value; it can only be used interally.
 		/// </summary>
 		/// <param name="rawValue"></param>
-		fp(long rawValue)
+		internal fp(long rawValue)
 		{
 			m_rawValue = rawValue;
 		}

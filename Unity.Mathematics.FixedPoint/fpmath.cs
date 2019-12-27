@@ -5,6 +5,22 @@ namespace Unity.Mathematics.FixedPoint
 {
     public static partial class fpmath
     {
+        public static readonly fp E = 2.7182818284590451m;
+        public static readonly fp PI = new fp(RAW_PI);
+        public static readonly fp PI_TIMES_2 = new fp(RAW_PI_TIMES_2);
+        public static readonly fp PI_OVER_2 = new fp(RAW_PI_OVER_2);
+        public static readonly fp PI_INV = 0.3183098861837906715377675267M;
+        public static readonly fp PI_OVER_2_INV = 0.6366197723675813430755350535M;
+        public static readonly fp SQRT2 = 1.4142135623730952m;
+        public static readonly fp LN10 = 2.3025850929940459m;
+        public static readonly fp LN2 = 0.69314718055994529m;
+        public static readonly fp LOG10E = 0.43429448190325182m;
+        public static readonly fp LOG2E = 1.4426950408889634m;
+
+        const long RAW_PI_TIMES_2 = 0x6487ED511;
+        const long RAW_PI = 0x3243F6A88;
+        const long RAW_PI_OVER_2 = 0x1921FB544;
+
         const string NOT_SUPPORTED_YET = "Not supported yet.";
 
         /// <summary>Returns the bit pattern of a fp as a uint.</summary>
