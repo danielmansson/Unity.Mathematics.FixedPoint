@@ -1,6 +1,7 @@
-name: Run all tests
+name: Actions 😎
 on: [push]
 
+jobs:
   testRunnerInAllModes:
     name: Test play and edit mode
     runs-on: ubuntu-latest
