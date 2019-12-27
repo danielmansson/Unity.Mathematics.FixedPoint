@@ -1,18 +1,19 @@
 {
-    "name": "com.danielmansson.mathematics.fixedpoint",
-    "displayName": "Mathematics.FixedPoint",
-    "version": "0.1.0",
-    "unity": "2019.3",
-    "description": "Fixed-point version of Unity's C# math library.",
-    "keywords": [
-        "fixedpoint", "math"
-    ],
-    "dependencies": {
-        "com.unity.mathematics": "1.1.0"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/danielmansson/Unity.Mathematics.FixedPoint",
-        "revision":""
-    }
+  "name": "com.danielmansson.mathematics.fixedpoint",
+  "displayName": "Mathematics.FixedPoint",
+  "version": "0.1.0",
+  "unity": "2019.3",
+  "description": "Fixed-point extension of Unity's C# math library based on FixedMath.Net and Unity.Mathematics.",
+  "keywords": [
+    "fixedpoint",
+    "math"
+  ],
+  "dependencies": {
+    "com.unity.mathematics": "1.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danielmansson/Unity.Mathematics.FixedPoint",
+    "revision": ""
+  }
 }
