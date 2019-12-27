@@ -5,7 +5,7 @@ namespace Unity.Mathematics.FixedPoint
 {
     public static partial class fpmath
     {
-        const string NOT_SUPPORTED_YET = "";
+        const string NOT_SUPPORTED_YET = "Not supported yet.";
 
         /// <summary>Returns the bit pattern of a fp as a uint.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
