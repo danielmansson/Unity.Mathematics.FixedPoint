@@ -1,0 +1,13 @@
+{
+    "name": "Unity.Mathematics.FixedPoint.Tests",
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "references": [
+        "Unity.Mathematics.FixedPoint"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "allowUnsafeCode": true
+}
