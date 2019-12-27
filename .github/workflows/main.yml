@@ -1,4 +1,4 @@
-name: Actions 😎
+name: Run all tests
 on: [push]
 
 jobs:
