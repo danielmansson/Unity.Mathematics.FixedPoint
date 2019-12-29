@@ -18,7 +18,7 @@ namespace Unity.Mathematics.FixedPoint.Tests
         [Test]
         public static void abs_fp()
         {
-            TestUtils.AreEqual(abs(0.0m), 1.0m);
+            TestUtils.AreEqual(abs(0.0m), 0.0m);
             TestUtils.AreEqual(abs(-1.1m), 1.1m);
             TestUtils.AreEqual(abs(2.2m), 2.2m);
         }
