@@ -246,18 +246,11 @@ namespace Unity.Mathematics.Mathematics.CodeGen
                     if (rows == 1 && columns == 1)  // don't generate type1x1
                         continue;
 
-                 //   if (columns == 1)
-                  //      vectorGenerator.WriteType("half", rows, columns, 0);
 
                     if (rows == 1)  // ignore row vectors for now
                         continue;
 
-                  //  vectorGenerator.WriteType("bool", rows, columns, Features.BitwiseLogic);
-                  //  vectorGenerator.WriteType("int", rows, columns, Features.All);
-                  //  vectorGenerator.WriteType("uint", rows, columns, Features.All);
                     vectorGenerator.WriteType("fp", rows, columns, Features.Arithmetic | Features.UnaryNegation);
-                   // vectorGenerator.WriteType("float", rows, columns, Features.Arithmetic | Features.UnaryNegation);
-                   // vectorGenerator.WriteType("double", rows, columns, Features.Arithmetic | Features.UnaryNegation);
                 }
             }
 
@@ -768,10 +761,6 @@ namespace Unity.Mathematics.Mathematics.CodeGen
             str.Append("\tpartial class fpmath\n");
             str.Append("\t{\n");
 
-          /*  GenerateMulImplementations("float", str);
-            GenerateMulImplementations("double", str);
-            GenerateMulImplementations("int", str);
-            GenerateMulImplementations("uint", str);*/
             GenerateMulImplementations("fp", str);
 
             str.Append("\t}\n");
@@ -1987,13 +1976,7 @@ namespace Unity.Mathematics.Mathematics.CodeGen
 
                 if(isScalar)
                 {
-                    string value = m_BaseType == "bool" ? "true" :
-                        m_BaseType == "uint" ? "17u" :
-                        m_BaseType == "int" ? "17" :
-                        m_BaseType == "float" ? "17.0f" :
-                        m_BaseType == "double" ? "17.0" :
-                        m_BaseType == "fp" ? "17.0m" :
-                        "UNSUPPORTED_TYPE_IN_TEST_CONSTRUCTOR";
+                    string value = m_BaseType == "bool" ? "true" : m_BaseType == "uint" ? "17u" : m_BaseType == "int" ? "17" : m_BaseType == "float" ? "17.0f" : m_BaseType == "double" ? "17.0" : m_BaseType == "fp" ? "17.0m" : "UNSUPPORTED_TYPE_IN_TEST_CONSTRUCTOR";
                     str.Append("(" + value + ");\n");
 
                     for (int row = 0; row < m_Rows; row++)
@@ -2546,14 +2529,7 @@ namespace Unity.Mathematics.Mathematics.CodeGen
 
                     if((typeof(O) == typeof(decimal) || typeof(O) == typeof(float) || typeof(O) == typeof(double)) && maxUps > 0)
                     {
-                        str.Append(", " + maxUps);
-
-                        if (maxUps >= int.MaxValue)
-                        {
-                            str.Append("L");
-                        }
-
-                        str.Append(", " + (signedZeroEqual ? "true" : "false"));
+                        str.Append(", " + maxUps + (maxUps >= int.MaxValue ? "L" : "" ) + ", " + (signedZeroEqual ? "true" : "false"));
                     }
 
                     str.Append(");\n");
@@ -2564,6 +2540,7 @@ namespace Unity.Mathematics.Mathematics.CodeGen
         private void GenerateComponentWiseTestFloatAndDouble(StringBuilder str, string functionName, double[,] input, double[] output, int floatMaxEps = 0, int doubleMaxEps = 0, bool signedZeroEqual = false)
         {
             float[,] inputFloat = new float[input.GetLength(0), input.GetLength(1)];
+
             for (int i = 0; i < input.GetLength(0); i++)
                 for (int j = 0; j < input.GetLength(1); j++)
                     inputFloat[i, j] = (float)input[i, j];
@@ -2571,59 +2548,8 @@ namespace Unity.Mathematics.Mathematics.CodeGen
             for (int i = 0; i < output.GetLength(0); i++)
                 outputFloat[i] = (float)output[i];
             GenerateComponentWiseTest(str, functionName, inputFloat, outputFloat, 4, floatMaxEps, signedZeroEqual);
-
-           /* var inputFp = new List<List<decimal>>();
-            var outputFp = new List<decimal>();
-            for (int i = 0; i < input.GetLength(0); i++)
-            {
-                try
-                {
-                    var inputComponents = new List<decimal>();
-
-                    for (int j = 0; j < input.GetLength(1); j++)
-                        inputComponents.Add((decimal)input[i, j]);
-
-                    var expectedOutput = (decimal)output[i];
-
-                    inputFp.Add(inputComponents);
-                    outputFp.Add(expectedOutput);
-                }
-                catch (OverflowException)
-                {
-                    //Ignore test values out of range for decimal.
-                }
-            }
-            decimal[,] inputFpArray = Create2dArray<decimal>(inputFp);
-            var outputFpArray = outputFp.ToArray();
-            GenerateComponentWiseTest(str, functionName, inputFpArray, outputFpArray, 4, 20000000, signedZeroEqual);*/
-
             GenerateComponentWiseTest(str, functionName, input, output, 4, doubleMaxEps, signedZeroEqual);
         }
-        private void GenerateComponentWiseTestFp(StringBuilder str, string functionName, decimal[,] input, decimal[] output, long fpMaxEps = 0, bool signedZeroEqual = false)
-        {
-            if (input.GetLength(0) != output.GetLength(0))
-                throw new Exception("Bad length for GenerateComponentWiseTestFp: " + functionName);
-
-            GenerateComponentWiseTest(str, functionName, input, output, 4, fpMaxEps, signedZeroEqual);
-        }
-
-        private T[,] Create2dArray<T>(List<List<T>> input)
-        {
-            int h = input.Count();
-            int w = input.First().Count();
-            var output = new T[h, w];
-
-            for (int i = 0; i < h; i++)
-            {
-                for (int j = 0; j < w; j++)
-                {
-                    output[i, j] = input[i][j];
-                }
-            }
-
-            return output;
-        }
-
         private void GenerateMathTests(StringBuilder str)
         {
             str.Append("using NUnit.Framework;\n");
@@ -2977,6 +2903,36 @@ namespace Unity.Mathematics.Mathematics.CodeGen
             str.Append("\n}\n");
         }
 
+        private void GenerateTypeTests(StringBuilder str)
+        {
+            StringBuilder mathStr = new StringBuilder();
+            
+            str.Append("using NUnit.Framework;\n");
+            str.Append("using static Unity.Mathematics.FixedPoint.fpmath;\n");
+            str.Append("using static Unity.Mathematics.math;\n\n");
+            str.Append("namespace Unity.Mathematics.FixedPoint.Tests\n");
+            str.Append("{\n");
+            str.Append("\t[TestFixture]\n");
+            str.AppendFormat("\tpublic class Test{0}\n", UpperCaseFirstLetter(m_TypeName));
+            str.Append("\t{\n");
+
+            TestStaticFields(str);
+            TestConstructors(str);
+            TestOperators(str);
+
+            str.Append("\n\t}");
+            str.Append("\n}\n");
+        }
+
+
+        private void GenerateComponentWiseTestFp(StringBuilder str, string functionName, decimal[,] input, decimal[] output, long fpMaxEps = 0, bool signedZeroEqual = false)
+        {
+            if (input.GetLength(0) != output.GetLength(0))
+                throw new Exception("Bad length for GenerateComponentWiseTestFp: " + functionName);
+
+            GenerateComponentWiseTest(str, functionName, input, output, 4, fpMaxEps, signedZeroEqual);
+        }
+
         private void GenerateFpComponentWiseTests(StringBuilder str)
         {
             int highPrecision = 1024;
@@ -3152,25 +3108,5 @@ namespace Unity.Mathematics.Mathematics.CodeGen
                                                                 new decimal[] { (decimal)Math.Log10(1.2e-9), (decimal)Math.Log10(1.0), (decimal)Math.Log10(1.2e9), }, lowPrecision);
         }
 
-        private void GenerateTypeTests(StringBuilder str)
-        {
-            StringBuilder mathStr = new StringBuilder();
-            
-            str.Append("using NUnit.Framework;\n");
-            str.Append("using static Unity.Mathematics.FixedPoint.fpmath;\n");
-            str.Append("using static Unity.Mathematics.math;\n\n");
-            str.Append("namespace Unity.Mathematics.FixedPoint.Tests\n");
-            str.Append("{\n");
-            str.Append("\t[TestFixture]\n");
-            str.AppendFormat("\tpublic class Test{0}\n", UpperCaseFirstLetter(m_TypeName));
-            str.Append("\t{\n");
-
-            TestStaticFields(str);
-            TestConstructors(str);
-            TestOperators(str);
-
-            str.Append("\n\t}");
-            str.Append("\n}\n");
-        }
     }
 }
