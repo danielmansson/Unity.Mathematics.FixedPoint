@@ -10,7 +10,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          path: main
+          path: Unity.Mathematics.FixedPoint
 
       # Checkout repository (required to test local actions)
       - name: Checkout test project
