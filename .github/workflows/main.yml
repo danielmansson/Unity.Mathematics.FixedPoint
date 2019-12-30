@@ -10,6 +10,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v1
 
+      # Checkout repository (required to test local actions)
+      - name: Checkout test project
+        uses: actions/checkout@v2
+        with:
+          repository: danielmansson/Unity.Mathematics.FixedPoint.TestProject
+
       # Configure test runner
       - name: Run tests
         id: testRunner
