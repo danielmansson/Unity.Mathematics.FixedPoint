@@ -1,6 +1,6 @@
 # Unity.Mathematics.FixedPoint
 
-A Fixed-point extension of Unity's C# math library based on [FixedMath.Net](https://github.com/asik/FixedMath.Net) and [Unity.Mathematics](https://github.com/Unity-Technologies/Unity.Mathematics). One of the main reasons for using this library instead of the built-in one is support for cross-platform determinism. At least until Unity officially supports it with DOTS. 
+A Fixed-point extension of Unity's C# math library based on [FixedMath.Net](https://github.com/asik/FixedMath.Net) and [Unity.Mathematics](https://github.com/Unity-Technologies/Unity.Mathematics). One of the main reasons for using this library instead of the built-in one is support for cross-platform determinism, until Unity officially supports it with Burst/DOTS. 
 
 The intention is to keep the API as close as possible to Unity.Mathematics. This should make it easy to convert your project to use floating point math if needed.
 
@@ -18,7 +18,7 @@ You can use this library in your Unity game by adding this repository to the pac
 
 ## Testing and developing
 
-The easiest way to iterate on this package is to check out this repository and [the test project](https://github.com/danielmansson/Unity.Mathematics.FixedPoint.TestProject) side-by-side and open the test project in Unity. This makes Unity pull in the required dependencies (Unity.Mathematics) and makes the test runner available.
+The easiest way to iterate on this package is to clone this repository and [the test project](https://github.com/danielmansson/Unity.Mathematics.FixedPoint.TestProject) side-by-side and open the test project in Unity. This resolves the required dependencies (Unity.Mathematics) and makes the test runner available.
 
 ## Missing features
 
@@ -37,7 +37,7 @@ Method stubs are added to match the API, but they are marked as obsolete with a 
 
 Unity.Mathematics is using code generation to create their vector and matrix types. Most of the changes in this repository from Unity.Mathematics has been in `VectorGenerator.cs` and `fpmath.cs`.
 
-The plan is to keep this repository almost up to date with Unity.Mathematics, so changes has been isolated as much as possible. However, `VectorGenerator.cs` was not made with external extensibility in mind. When there are internal changes to Unity.Mathematics in upcoming version, this will require manual patching.
+The plan is to keep this repository almost up to date with Unity.Mathematics, so changes has been isolated as much as possible. However, `VectorGenerator.cs` was not made with external extensibility in mind. When there are internal changes to Unity.Mathematics in upcoming versions, this will require manual patching.
 
 `fpmath.cs` contains the common fixed point math operations. The implementations are based on the floating point methods in Unity.Mathematics `math.cs`.
 
@@ -47,8 +47,9 @@ More tests are needed to verify the precision of all fixed point operations. The
 
 ## Licensing
 
-This project is licensed under the MIT License [LICENSE.md](LICENSE.md)
+This project is licensed under the MIT License ([LICENSE.md](LICENSE.md))
 
-Unity.Mathematics [Unity Companion License](https://github.com/Unity-Technologies/Unity.Mathematics/blob/master/LICENSE.md)
-FixedMath.Net [Apache License, Version 2.0](Unity.Mathematics.FixedPoint/fp/LICENSE.txt)
+Unity.Mathematics ([Unity Companion License](https://github.com/Unity-Technologies/Unity.Mathematics/blob/master/LICENSE.md))
+
+FixedMath.Net ([Apache License, Version 2.0](Unity.Mathematics.FixedPoint/fp/LICENSE.txt))
 
