@@ -5,3 +5,7 @@ In the unit tests you'll find implementations for Int32-based (Q15.16) and Byte-
 This project started as a port of libfixmath (http://code.google.com/p/libfixmath/).
 
 Note that the type requires explicit casts to convert to floating point and this is intentional, the difference between fixed point and floating point math is as important as the one between floating point and integral math.
+
+===
+
+(2019/12/31) Naming was changed to align with Unity.Mathematics naming conventions.
