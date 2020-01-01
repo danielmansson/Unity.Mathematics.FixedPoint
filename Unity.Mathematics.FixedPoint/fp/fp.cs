@@ -14,17 +14,17 @@ namespace Unity.Mathematics.FixedPoint
         long m_rawValue;
 
         // Precision of this type is 2^-32, that is 2,3283064365386962890625E-10
-        public static readonly decimal precision = new fp(1L);//0.00000000023283064365386962890625m;
-        public static readonly fp max_value = new fp(MAX_VALUE);
-        public static readonly fp min_value = new fp(MIN_VALUE);
-        public static readonly fp one = new fp(ONE);
-        public static readonly fp zero = new fp();
+        public static decimal precision => new fp(1L);//0.00000000023283064365386962890625m;
+        public static fp max_value => new fp(MAX_VALUE);
+        public static fp min_value => new fp(MIN_VALUE);
+        public static fp one => new fp(ONE);
+        public static fp zero => new fp();
 
-        static readonly fp Pi = new fp(PI);
-        static readonly fp PiOver2 = new fp(PI_OVER_2);
-        static readonly fp Log2Max = new fp(LOG2MAX);
-        static readonly fp Log2Min = new fp(LOG2MIN);
-        static readonly fp Ln2 = new fp(LN2);
+        static fp Pi => new fp(PI);
+        static fp PiOver2 => new fp(PI_OVER_2);
+        static fp Log2Max => new fp(LOG2MAX);
+        static fp Log2Min => new fp(LOG2MIN);
+        static fp Ln2 => new fp(LN2);
 
         static readonly fp LutInterval = (fp)(LUT_SIZE - 1) / PiOver2;
         const long MAX_VALUE = long.MaxValue;
