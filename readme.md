@@ -20,6 +20,10 @@ You can use this library in your Unity game by adding this repository to the pac
 
 The easiest way to iterate on this package is to clone this repository and [the test project](https://github.com/danielmansson/Unity.Mathematics.FixedPoint.TestProject) side-by-side and open the test project in Unity. This resolves the required dependencies (Unity.Mathematics) and makes the test runner available.
 
+## Example project
+
+A simple example project can be found [here](https://github.com/danielmansson/Unity.Mathematics.FixedPoint.Example). It contains two side-by-side simulations, one using a floating point implementation and the other using fixed point.
+
 ## Missing features
 
 Unity.Mathematics.FixedPoint is not feature complete yet. This is missing:
