@@ -33,7 +33,7 @@ Unity.Mathematics.FixedPoint is not feature complete yet. This is missing:
 
 Method stubs are added to match the API, but they are marked as obsolete with a compile error.
 
-## Differences from Unity.Mathematics
+## Maintaining changes from Unity.Mathematics
 
 Unity.Mathematics is using code generation to create their vector and matrix types. Most of the changes in this repository from Unity.Mathematics has been in `VectorGenerator.cs` and `fpmath.cs`.
 
